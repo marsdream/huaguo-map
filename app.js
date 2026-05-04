@@ -424,35 +424,30 @@ async function showFlowerPhoto(name) {
   els.modal.classList.add('show');
 
   try {
-    // Look up scientific name from flowers.json
-    const rec = findFlowerRecord(name);
-    const sci = (rec && rec.scientificName) ? rec.scientificName : name;
-    const encoded = encodeURIComponent(sci);
-
+    const encoded = encodeURIComponent(name);
     const resp = await fetch(
-      `https://api.inaturalist.org/v1/observations?` +
-      `species_name=${encoded}&photos=true&per_page=6` +
-      `&ordered_by=votes&locale=zh&verifiable=true`
+      `https://zj.v.api.aa1.cn/api/so-baidu-img/?msg=${encoded}&page=1`,
+      { headers: { 'Origin': 'https://huaguo.goye.club' } }
     );
-    const json = await resp.json();
-    const results = json.results || [];
+    const d = await resp.json();
+    const imgs = Array.isArray(d) ? d : (d.data || []);
 
     els.loading.style.display = 'none';
 
-    if (results.length === 0) {
+    if (imgs.length === 0) {
       els.error.style.display = 'block';
       return;
     }
 
-    const html = results.map(obs => {
-      if (!obs.photos || obs.photos.length === 0) return '';
-      const photo = obs.photos[0];
-      const imgUrl = photo.url.replace('/square.', '/medium.');
-      const credit = photo.attribution || 'iNaturalist';
-      const inatUrl = obs.uri || 'https://www.inaturalist.org/observations';
-      return `<a href="${inatUrl}" target="_blank" class="flower-photo-card" title="查看原图">
-        <img src="${imgUrl}" alt="${name}" loading="lazy" />
-        <p class="flower-credit">${credit}</p>
+    // Up to 6 images; use thumbnail for display, hoverUrl for original link
+    const html = imgs.slice(0, 6).map(img => {
+      const thumb = img.thumbnailUrl || img.hoverUrl || '';
+      const orig  = img.hoverUrl || thumb;
+      const title = img.oriTitle || '';
+      if (!thumb) return '';
+      return `<a href="${orig}" target="_blank" class="flower-photo-card" title="${title}">
+        <img src="${thumb}" alt="${name}" loading="lazy" />
+        <p class="flower-credit">百度图片 · ${title.slice(0, 20)}</p>
       </a>`;
     }).join('');
 
