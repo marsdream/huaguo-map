@@ -187,6 +187,12 @@ main {
 .dot.summer { background: #4caf50; }
 .dot.autumn { background: #ff9800; }
 .dot.winter { background: #2196f3; }
+.legend-sep { color: #ccc; padding: 0 2px; }
+.line { width: 18px; height: 3px; border-radius: 2px; display: inline-block; }
+.line.hiking { background: #2196f3; }
+.line.mountain { background: #4caf50; }
+.line.demanding { background: #ff9800; }
+.line.alpine { background: #d32f2f; }
 
 /* Modal */
 .modal {

@@ -472,6 +472,95 @@ L.tileLayer('https://webrd01.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=
   errorTileUrl: 'https://wprd01.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}'
 }).addTo(map);
 
+// ─── OSM 山野路径叠加（方案A）──────────────────────────────
+const SAC_STYLE = {
+  alpine_hiking:              { color: '#d32f2f', weight: 4, opacity: 0.85 },
+  demanding_alpine_hiking:    { color: '#e64a19', weight: 4, opacity: 0.80 },
+  difficult_alpine_hiking:    { color: '#f44336', weight: 4, opacity: 0.80 },
+  demanding_mountain_hiking:  { color: '#ff9800', weight: 3, opacity: 0.75 },
+  mountain_hiking:            { color: '#4caf50', weight: 3, opacity: 0.70 },
+  hiking:                     { color: '#2196f3', weight: 2, opacity: 0.65 },
+};
+const SAC_LABELS = {
+  alpine_hiking:              '🧗 高山路径',
+  demanding_alpine_hiking:    '🔴 艰难高山',
+  difficult_alpine_hiking:    '🔴 难度高山',
+  demanding_mountain_hiking:  '🟠 中等偏难',
+  mountain_hiking:            '🟢 中等难度',
+  hiking:                     '🔵 休闲步道',
+};
+
+function getStyle(feature) {
+  const sac = feature.properties.sac_scale || 'hiking';
+  const style = SAC_STYLE[sac] || SAC_STYLE.hiking;
+  return { ...style, className: 'osm-trail' };
+}
+
+function onEachFeature(feature, layer) {
+  const p = feature.properties;
+  const sac = p.sac_scale || 'hiking';
+  const label = SAC_LABELS[sac] || sac;
+  const len = p.approx_km ? `约 ${p.approx_km} km` : '';
+  layer.bindPopup(`<strong>${p.name || '无名路径'}</strong><br>${label}${len ? ' · ' + len : ''}`, {
+    maxWidth: 200,
+    className: 'osm-popup'
+  });
+}
+
+async function loadOSMTrails() {
+  try {
+    const bbox = '39.93,116.10,40.05,116.22'; // 香山·八大处
+    const query = `[out:json][timeout:30];(way["highway"~"path|footway"]["sac_scale"](${bbox}););out body;>;out skel qt;`;
+    const resp = await fetch('https://overpass-api.de/api/interpreter', {
+      method: 'POST',
+      body: 'data=' + encodeURIComponent(query),
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    });
+    const data = await resp.json();
+
+    // Build node lookup
+    const nodes = {};
+    const ways = [];
+    for (const e of data.elements) {
+      if (e.type === 'node') nodes[e.id] = [e.lat, e.lon];
+      if (e.type === 'way' && e.nodes && e.nodes.length >= 2) ways.push(e);
+    }
+
+    // Convert to GeoJSON
+    const geojson = {
+      type: 'FeatureCollection',
+      features: ways.map(w => {
+        const coords = w.nodes.map(n => nodes[n]).filter(Boolean);
+        // Approximate km (1° lat ≈ 111km)
+        const km = coords.length > 1
+          ? coords.reduce((sum, c, i) => {
+              if (i === 0) return 0;
+              const dlat = Math.abs(c[0] - coords[i-1][0]);
+              const dlng = Math.abs(c[1] - coords[i-1][1]) * Math.cos(c[0] * Math.PI / 180);
+              return sum + Math.sqrt(dlat*dlat + dlng*dlng) * 111;
+            }, 0).toFixed(1)
+          : null;
+        return {
+          type: 'Feature',
+          geometry: { type: 'LineString', coordinates: coords.map(c => [c[1], c[0]]) },
+          properties: {
+            name: w.tags?.name || '',
+            sac_scale: w.tags?.sac_scale || 'hiking',
+            approx_km: km
+          }
+        };
+      })
+    };
+
+    L.geoJSON(geojson, { style: getStyle, onEachFeature }).addTo(map);
+    console.log(`[OSM Trails] Loaded ${ways.length} trail segments`);
+  } catch (e) {
+    console.warn('[OSM Trails] Failed to load:', e);
+  }
+}
+
+loadOSMTrails();
+
 // Season colors
 const SEASON_COLORS = {
   spring: '#e91e63',
