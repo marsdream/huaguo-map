@@ -516,9 +516,22 @@ function onEachFeature(feature, layer) {
   });
 }
 
+let _osmTrailsLoaded = false;
+let _osmTrailsLayer = null;
+
 async function loadOSMTrails() {
+  if (_osmTrailsLoaded) return;
+
+  const btn = document.getElementById('loadTrailsBtn');
+  const loading = document.getElementById('trailsLoading');
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = '加载中…';
+  }
+  if (loading) loading.style.display = 'flex';
+
   try {
-    const bbox = '39.93,116.10,40.05,116.22'; // 香山·八大处
+    const bbox = '39.93,116.10,40.05,116.22';
     const query = `[out:json][timeout:30];(way["highway"~"path|footway"]["sac_scale"](${bbox}););out body;>;out skel qt;`;
     const resp = await fetch('https://overpass-api.de/api/interpreter', {
       method: 'POST',
@@ -527,7 +540,6 @@ async function loadOSMTrails() {
     });
     const data = await resp.json();
 
-    // Build node lookup
     const nodes = {};
     const ways = [];
     for (const e of data.elements) {
@@ -535,12 +547,10 @@ async function loadOSMTrails() {
       if (e.type === 'way' && e.nodes && e.nodes.length >= 2) ways.push(e);
     }
 
-    // Convert to GeoJSON
     const geojson = {
       type: 'FeatureCollection',
       features: ways.map(w => {
         const coords = w.nodes.map(n => nodes[n]).filter(Boolean);
-        // Approximate km (1° lat ≈ 111km)
         const km = coords.length > 1
           ? coords.reduce((sum, c, i) => {
               if (i === 0) return 0;
@@ -561,14 +571,23 @@ async function loadOSMTrails() {
       })
     };
 
-    L.geoJSON(geojson, { style: getStyle, onEachFeature }).addTo(map);
-    console.log(`[OSM Trails] Loaded ${ways.length} trail segments`);
+    _osmTrailsLayer = L.geoJSON(geojson, { style: getStyle, onEachFeature }).addTo(map);
+    _osmTrailsLoaded = true;
+    if (btn) {
+      btn.textContent = '✅ 路径已加载';
+      btn.disabled = false;
+    }
+    if (loading) loading.style.display = 'none';
+    console.log(`[OSM Trails] Loaded ${ways.length} segments`);
   } catch (e) {
     console.warn('[OSM Trails] Failed to load:', e);
+    if (btn) {
+      btn.textContent = '加载失败，重试';
+      btn.disabled = false;
+    }
+    if (loading) loading.style.display = 'none';
   }
 }
-
-loadOSMTrails();
 
 // Season colors
 const SEASON_COLORS = {
