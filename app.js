@@ -747,7 +747,7 @@ async function loadOSMTrails(bbox, routeId) {
     _osmTrailsLoaded = true;
     _activeOsmRouteId = routeId;
     if (btn) {
-      btn.textContent = '✅ 路径已加载';
+      btn.textContent = '✅ 已加载';
       btn.disabled = true;
     }
     console.log(`[OSM Trails] Loaded ${ways.length} segments for route ${routeId}`);
@@ -780,6 +780,17 @@ function loadOSMTrailsForRoute() {
   const delta = 0.05; // ±0.05度 ≈ ±5km
   const bbox = `${(lat-delta).toFixed(4)},${(lng-delta).toFixed(4)},${(lat+delta).toFixed(4)},${(lng+delta).toFixed(4)}`;
   loadOSMTrails(bbox, route.id);
+}
+
+// 导航前往：调用高德地图 web URI
+function navigateToRoute() {
+  if (!activeRouteId) return;
+  const route = ROUTES.find(r => r.id === activeRouteId);
+  if (!route) return;
+  const [lat, lng] = route.coordinates;
+  // 高德地图 web 导航 URL，lon,lat,name
+  const url = `https://uri.amap.com/navigation?to=${lng},${lat},${encodeURIComponent(route.name)}&mode=car&callnative=1`;
+  window.open(url, '_blank');
 }
 
 // Season colors
@@ -996,10 +1007,10 @@ function showRouteDetail(id) {
   const trailBtn = document.getElementById('routeLoadTrailsBtn');
   if (trailBtn) {
     if (_activeOsmRouteId === id) {
-      trailBtn.textContent = '✅ 路径已加载';
+      trailBtn.textContent = '✅ 已加载';
       trailBtn.disabled = true;
     } else {
-      trailBtn.textContent = '🗺️ 加载路径';
+      trailBtn.textContent = '🗺️ 加载徒步路线';
       trailBtn.disabled = false;
     }
   }

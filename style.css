@@ -309,6 +309,50 @@ footer {
   line-height: 1.5;
 }
 
+/* 弹窗底部操作按钮区 */
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.action-btn {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1.5px solid var(--primary-light);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--primary);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+.action-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+.action-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.action-btn:disabled:hover {
+  background: #fff;
+  color: var(--primary);
+}
+/* 导航按钮用蓝色 */
+.action-btn.nav-btn {
+  border-color: #1890ff;
+  color: #1890ff;
+}
+.action-btn.nav-btn:hover {
+  background: #1890ff;
+  border-color: #1890ff;
+  color: #fff;
+}
+
 footer a { color: var(--primary); }
 
 /* Responsive */
@@ -379,7 +423,7 @@ footer a { color: var(--primary); }
 .flower-modal {
   display: none;
   position: fixed;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   background: rgba(0,0,0,0.7);
   z-index: 3000;
   justify-content: center;
