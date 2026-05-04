@@ -373,6 +373,7 @@ const SEASON_NAMES = {
 };
 
 let activeSeason = 'all';
+let activeRegion = 'all';
 let activeRouteId = null;
 const markers = {};
 
@@ -394,12 +395,23 @@ ROUTES.forEach(route => {
   markers[route.id] = marker;
 });
 
-// Filter buttons
-document.querySelectorAll('.filter-btn').forEach(btn => {
+// Season filter buttons
+document.querySelectorAll('.season-filters .filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.season-filters .filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     activeSeason = btn.dataset.season;
+    renderRouteList();
+    updateMarkers();
+  });
+});
+
+// Region filter buttons
+document.querySelectorAll('.region-filters .filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.region-filters .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeRegion = btn.dataset.region;
     renderRouteList();
     updateMarkers();
   });
@@ -430,6 +442,7 @@ function getFruitsForRoute(route) {
 }
 
 function matchesFilter(route) {
+  if (activeRegion !== 'all' && route.location !== activeRegion) return false;
   if (activeSeason !== 'all') {
     const hasSeason = route.seasons.some(s => s.season === activeSeason);
     if (!hasSeason) return false;
@@ -451,9 +464,13 @@ function matchesFilter(route) {
 
 function renderRouteList() {
   const container = document.getElementById('routeList');
+  const countEl = document.getElementById('routeCount');
   const filtered = ROUTES.filter(matchesFilter);
 
+  if (countEl) countEl.textContent = `共 ${filtered.length} 条路线`;
+
   if (filtered.length === 0) {
+    if (countEl) countEl.textContent = '共 0 条路线';
     container.innerHTML = '<div style="padding:20px;text-align:center;color:#999;font-size:14px;">没有找到符合条件的路线</div>';
     return;
   }
@@ -488,7 +505,9 @@ function renderRouteList() {
 function updateMarkers() {
   ROUTES.forEach(route => {
     const marker = markers[route.id];
-    if (activeSeason === 'all' || route.seasons.some(s => s.season === activeSeason)) {
+    const seasonMatch = activeSeason === 'all' || route.seasons.some(s => s.season === activeSeason);
+    const regionMatch = activeRegion === 'all' || route.location === activeRegion;
+    if (seasonMatch && regionMatch) {
       marker.addTo(map);
     } else {
       marker.remove();
@@ -508,6 +527,8 @@ function showRouteDetail(id) {
   document.getElementById('modalLocation').textContent = `📍 ${route.location}`;
   document.getElementById('modalDifficulty').textContent = `🥾 ${route.difficulty}`;
   document.getElementById('modalDistance').textContent = `📏 ${route.distance}`;
+  const elevEl = document.getElementById('modalElevation');
+  if (elevEl) elevEl.textContent = `⬆️ ${route.elevation}`;
 
   const seasonsHtml = route.seasons.map(s => {
     const flowersHtml = s.flowers.length > 0
@@ -531,7 +552,9 @@ function showRouteDetail(id) {
 
   const notesHtml = route.notes ? `<div class="modal-notes">💬 ${route.notes}</div>` : '';
 
-  document.getElementById('modalSeasons').innerHTML = seasonsHtml + notesHtml;
+  document.getElementById('modalSeasons').innerHTML = seasonsHtml;
+  const notesEl = document.getElementById('modalNotes');
+  if (notesEl) notesEl.innerHTML = notesHtml;
   document.getElementById('modal').classList.add('show');
 }
 
