@@ -56,12 +56,6 @@
         <span class="legend-item"><span class="line demanding"></span>偏难</span>
         <span class="legend-item"><span class="line alpine"></span>危险</span>
       </div>
-      <button id="loadTrailsBtn" class="load-trails-btn" onclick="loadOSMTrails()" title="从OpenStreetMap加载附近徒步路径">
-        🗺️ 加载路径
-      </button>
-      <div id="trailsLoading" class="trails-loading" style="display:none">
-        <span>正在加载路径…</span>
-      </div>
     </div>
   </main>
 
@@ -76,6 +70,7 @@
         <span class="badge" id="modalDifficulty"></span>
         <span class="badge" id="modalDistance"></span>
         <span class="badge" id="modalElevation"></span>
+        <button class="badge load-trails-btn" id="routeLoadTrailsBtn" onclick="loadOSMTrailsForRoute()">🗺️ 加载路径</button>
       </div>
       <div class="modal-seasons" id="modalSeasons"></div>
       <div class="modal-notes" id="modalNotes"></div>

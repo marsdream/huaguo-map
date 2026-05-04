@@ -518,20 +518,22 @@ function onEachFeature(feature, layer) {
 
 let _osmTrailsLoaded = false;
 let _osmTrailsLayer = null;
+let _activeOsmRouteId = null; // 当前显示哪条路线的OSM轨迹
 
-async function loadOSMTrails() {
-  if (_osmTrailsLoaded) return;
+async function loadOSMTrails(bbox, routeId) {
+  // 清除旧图层（如果是不同路线）
+  if (_osmTrailsLayer) {
+    map.removeLayer(_osmTrailsLayer);
+    _osmTrailsLayer = null;
+  }
 
-  const btn = document.getElementById('loadTrailsBtn');
-  const loading = document.getElementById('trailsLoading');
+  const btn = document.getElementById('routeLoadTrailsBtn');
   if (btn) {
     btn.disabled = true;
     btn.textContent = '加载中…';
   }
-  if (loading) loading.style.display = 'flex';
 
   try {
-    const bbox = '39.93,116.10,40.05,116.22';
     const query = `[out:json][timeout:30];(way["highway"~"path|footway"]["sac_scale"](${bbox}););out body;>;out skel qt;`;
     const resp = await fetch('https://overpass-api.de/api/interpreter', {
       method: 'POST',
@@ -573,20 +575,33 @@ async function loadOSMTrails() {
 
     _osmTrailsLayer = L.geoJSON(geojson, { style: getStyle, onEachFeature }).addTo(map);
     _osmTrailsLoaded = true;
+    _activeOsmRouteId = routeId;
     if (btn) {
       btn.textContent = '✅ 路径已加载';
-      btn.disabled = false;
+      btn.disabled = true;
     }
-    if (loading) loading.style.display = 'none';
-    console.log(`[OSM Trails] Loaded ${ways.length} segments`);
+    console.log(`[OSM Trails] Loaded ${ways.length} segments for route ${routeId}`);
   } catch (e) {
     console.warn('[OSM Trails] Failed to load:', e);
     if (btn) {
-      btn.textContent = '加载失败，重试';
+      btn.textContent = '❌ 加载失败';
       btn.disabled = false;
     }
-    if (loading) loading.style.display = 'none';
   }
+}
+
+function loadOSMTrailsForRoute() {
+  if (!activeRouteId) return;
+  const route = ROUTES.find(r => r.id === activeRouteId);
+  if (!route) return;
+
+  // 如果当前显示的就是这条路线，且已加载过，不重复加载
+  if (_activeOsmRouteId === activeRouteId && _osmTrailsLayer) return;
+
+  const [lat, lng] = route.coordinates;
+  const delta = 0.05; // ±0.05度 ≈ ±5km
+  const bbox = `${(lat-delta).toFixed(4)},${(lng-delta).toFixed(4)},${(lat+delta).toFixed(4)},${(lng+delta).toFixed(4)}`;
+  loadOSMTrails(bbox, route.id);
 }
 
 // Season colors
@@ -798,6 +813,19 @@ function showRouteDetail(id) {
   document.getElementById('modalSeasons').innerHTML = seasonsHtml;
   const notesEl = document.getElementById('modalNotes');
   if (notesEl) notesEl.innerHTML = notesHtml;
+
+  // 更新路线加载按钮状态
+  const trailBtn = document.getElementById('routeLoadTrailsBtn');
+  if (trailBtn) {
+    if (_activeOsmRouteId === id) {
+      trailBtn.textContent = '✅ 路径已加载';
+      trailBtn.disabled = true;
+    } else {
+      trailBtn.textContent = '🗺️ 加载路径';
+      trailBtn.disabled = false;
+    }
+  }
+
   document.getElementById('modal').classList.add('show');
 }
 

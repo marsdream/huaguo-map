@@ -460,12 +460,8 @@ footer a { color: var(--primary); }
   right: 12px;
 }
 
-/* ── 加载路径按钮 ── */
+/* ── 加载路径按钮（弹窗内） ── */
 .load-trails-btn {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  z-index: 1000;
   background: #fff;
   border: 1.5px solid #4caf50;
   border-radius: 20px;
@@ -475,10 +471,20 @@ footer a { color: var(--primary); }
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   transition: background 0.2s, color 0.2s;
+  /* 非 absolute，方便放在弹窗 badge 行内 */
+  position: relative;
 }
 .load-trails-btn:hover { background: #4caf50; color: #fff; }
 .load-trails-btn:disabled { opacity: 0.7; cursor: default; }
 .load-trails-btn[disabled]:hover { background: #fff; color: #4caf50; }
+
+/* 地图右下角绝对定位版本 */
+.load-trails-btn.floating {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1000;
+}
 
 .trails-loading {
   position: absolute;
