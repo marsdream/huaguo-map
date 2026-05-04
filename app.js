@@ -15,7 +15,7 @@ const ROUTES = [
       {
         season: "spring",
         months: [4, 5],
-        flowers: ["藤萝花海", "山桃花"],
+        flowers: ["藤萝花海","山桃花"],
         fruits: []
       },
       {
@@ -24,14 +24,12 @@ const ROUTES = [
         flowers: ["秋叶"],
         fruits: [
           { name: "野生猕猴桃", note: "酸甜，9月最佳" },
-          { name: "酸枣", note: "满山遍野" }
-        ]
-      }
+          { name: "酸枣", note: "满山遍野" },
+        ],
+      },
     ],
-    notes: "起点：河防口隧道。驴友称为「北京小魔法森林」，溪流潺潺，爬升不高",
-    "rlevel": 4,
-    "rlevel": 4,
-  
+    rlevel: 4,
+    notes: "起点：河防口隧道。驴友称为「北京小魔法森林」，溪流潺潺，爬升不高"
   },
   {
     id: "beiling-shan",
@@ -45,16 +43,14 @@ const ROUTES = [
       {
         season: "spring",
         months: [5, 6],
-        flowers: ["高山草甸野花", "山丹丹"],
+        flowers: ["高山草甸野花","山丹丹"],
         fruits: [
-          { name: "野韭菜", note: "初夏最佳，可包饺子" }
-        ]
-      }
+          { name: "野韭菜", note: "初夏最佳，可包饺子" },
+        ],
+      },
     ],
-    notes: "起点：塔儿寺村。海拔1915米，京西徒步枢纽，野韭菜坡是其标志",
-    "rlevel": 7,
-    "rlevel": 7,
-  
+    rlevel: 7,
+    notes: "起点：塔儿寺村。海拔1915米，京西徒步枢纽，野韭菜坡是其标志"
   },
   {
     id: "dongling-shan",
@@ -70,22 +66,20 @@ const ROUTES = [
         months: [5],
         flowers: ["山花烂漫"],
         fruits: [
-          { name: "野韭菜", note: "山顶草甸可采" }
-        ]
+          { name: "野韭菜", note: "山顶草甸可采" },
+        ],
       },
       {
         season: "autumn",
         months: [10],
         flowers: ["彩叶"],
         fruits: [
-          { name: "山楂", note: "野生山楂" }
-        ]
-      }
+          { name: "山楂", note: "野生山楂" },
+        ],
+      },
     ],
-    notes: "北京第一高峰，海拔2303米。起点下马威（GPS: 39.9985, 115.4344），或聚灵峡景区",
-    "rlevel": 8,
-    "rlevel": 8,
-  
+    rlevel: 8,
+    notes: "北京第一高峰，海拔2303米。起点下马威（GPS: 39.9985, 115.4344），或聚灵峡景区"
   },
   {
     id: "huangcao-liang",
@@ -102,14 +96,12 @@ const ROUTES = [
         flowers: ["秋草金黄"],
         fruits: [
           { name: "酸枣", note: "漫山遍野" },
-          { name: "山楂", note: "" }
-        ]
-      }
+          { name: "山楂", note: "" },
+        ],
+      },
     ],
-    notes: "主峰海拔1737米，京西古道驿站，被誉为「驴友后花园」",
-    "rlevel": 6,
-    "rlevel": 6,
-  
+    rlevel: 6,
+    notes: "主峰海拔1737米，京西古道驿站，被誉为「驴友后花园」"
   },
   {
     id: "houhuayuan",
@@ -123,16 +115,14 @@ const ROUTES = [
       {
         season: "spring",
         months: [4],
-        flowers: ["山桃花", "野花"],
+        flowers: ["山桃花","野花"],
         fruits: [
-          { name: "野葱", note: "4月最佳，可做馅饼" }
-        ]
-      }
+          { name: "野葱", note: "4月最佳，可做馅饼" },
+        ],
+      },
     ],
-    notes: "又称白虎涧森林公园，地址：昌平区阳坊镇后二路。「燕平八景」之一",
-    "rlevel": 2,
-    "rlevel": 2,
-  
+    rlevel: 2,
+    notes: "又称白虎涧森林公园，地址：昌平区阳坊镇后二路。「燕平八景」之一"
   },
   {
     id: "baihe-xiagu",
@@ -148,14 +138,12 @@ const ROUTES = [
         months: [6, 7, 8],
         flowers: [],
         fruits: [
-          { name: "野生桑葚", note: "河边桑树，夏季可采" }
-        ]
-      }
+          { name: "野生桑葚", note: "河边桑树，夏季可采" },
+        ],
+      },
     ],
-    notes: "延庆白河堡至密云水库段，著名的「白河徒步道」",
-    "rlevel": 4,
-    "rlevel": 4,
-  
+    rlevel: 4,
+    notes: "延庆白河堡至密云水库段，著名的「白河徒步道」"
   },
   {
     id: "yudi-shan",
@@ -169,7 +157,7 @@ const ROUTES = [
       {
         season: "spring",
         months: [4, 5],
-        flowers: ["山花烂漫", "杜鹃"],
+        flowers: ["山花烂漫","杜鹃"],
         fruits: []
       },
       {
@@ -177,22 +165,20 @@ const ROUTES = [
         months: [6, 7, 8],
         flowers: [],
         fruits: [
-          { name: "山楂（青）", note: "夏季果实初成" }
-        ]
+          { name: "山楂（青）", note: "夏季果实初成" },
+        ],
       },
       {
         season: "autumn",
         months: [9, 10],
         flowers: ["彩叶"],
         fruits: [
-          { name: "野果", note: "" }
-        ]
-      }
+          { name: "野果", note: "" },
+        ],
+      },
     ],
-    notes: "海拔860米，延庆深山处女地，四季皆宜，高山草甸是其标志景观",
-    "rlevel": 4,
-    "rlevel": 4,
-  
+    rlevel: 4,
+    notes: "海拔860米，延庆深山处女地，四季皆宜，高山草甸是其标志景观"
   },
   {
     id: "yunmeng-shan",
@@ -208,14 +194,12 @@ const ROUTES = [
         months: [10, 11],
         flowers: [],
         fruits: [
-          { name: "野果", note: "山里各种野果" }
-        ]
-      }
+          { name: "野果", note: "山里各种野果" },
+        ],
+      },
     ],
-    notes: "主峰海拔1414米，京郊「小黄山」，地址：密云区与怀柔区交界",
-    "rlevel": 5,
-    "rlevel": 5,
-  
+    rlevel: 5,
+    notes: "主峰海拔1414米，京郊「小黄山」，地址：密云区与怀柔区交界"
   },
   {
     id: "jsek-shan",
@@ -229,7 +213,7 @@ const ROUTES = [
       {
         season: "spring",
         months: [4],
-        flowers: ["山桃花", "杏花"],
+        flowers: ["山桃花","杏花"],
         fruits: []
       },
       {
@@ -237,14 +221,12 @@ const ROUTES = [
         months: [10],
         flowers: ["秋景"],
         fruits: [
-          { name: "核桃", note: "农家核桃树" }
-        ]
-      }
+          { name: "核桃", note: "农家核桃树" },
+        ],
+      },
     ],
-    notes: "戒台寺周边，千年古寺，历史悠久",
-    "rlevel": 3,
-    "rlevel": 3,
-  
+    rlevel: 3,
+    notes: "戒台寺周边，千年古寺，历史悠久"
   },
   {
     id: "bjiaotou",
@@ -266,12 +248,10 @@ const ROUTES = [
         months: [11],
         flowers: [],
         fruits: []
-      }
+      },
     ],
-    notes: "北京最著名野长城段，冬季可攀冰，需一定户外经验",
-    "rlevel": 8,
-    "rlevel": 8,
-  
+    rlevel: 8,
+    notes: "北京最著名野长城段，冬季可攀冰，需一定户外经验"
   },
   {
     id: "lingshan",
@@ -293,11 +273,10 @@ const ROUTES = [
         months: [7, 8],
         flowers: ["亚高山草甸野花"],
         fruits: []
-      }
+      },
     ],
-    notes: "灵山风景区，冬季雪景出名，夏季草甸花海。起点：江水河村",
-    "rlevel": 7,
-    "rlevel": 7,
+    rlevel: 7,
+    notes: "灵山风景区，冬季雪景出名，夏季草甸花海。起点：江水河村"
   },
   {
     id: "jiuyishan",
@@ -313,11 +292,10 @@ const ROUTES = [
         months: [5],
         flowers: ["山花"],
         fruits: []
-      }
+      },
     ],
-    notes: "北京最高的烽火台（海拔1000米+），春天山花遍野",
-    "rlevel": 6,
-    "rlevel": 6,
+    rlevel: 6,
+    notes: "北京最高的烽火台（海拔1000米+），春天山花遍野"
   },
   {
     id: "longtan-hu",
@@ -333,13 +311,12 @@ const ROUTES = [
         months: [7, 8],
         flowers: [],
         fruits: [
-          { name: "野生桑葚", note: "" }
-        ]
-      }
+          { name: "野生桑葚", note: "" },
+        ],
+      },
     ],
-    notes: "夏季玩水的好地方，溪流清澈",
-    "rlevel": 3,
-    "rlevel": 3,
+    rlevel: 3,
+    notes: "夏季玩水的好地方，溪流清澈"
   },
   {
     id: "xianshi",
@@ -355,20 +332,18 @@ const ROUTES = [
         months: [4],
         flowers: ["野花"],
         fruits: [
-          { name: "野菜", note: "可食用的各种野菜" }
-        ]
-      }
+          { name: "野菜", note: "可食用的各种野菜" },
+        ],
+      },
     ],
-    notes: "昌平山区，春季挖野菜的好去处",
-    "rlevel": 3,
-    "rlevel": 3,
+    rlevel: 3,
+    notes: "昌平山区，春季挖野菜的好去处"
   },
-
   {
     id: "xiangbala",
     name: "香八拉",
     location: "海淀区·石景山区",
-    coordinates: [39.9786, 116.1950],
+    coordinates: [39.9786, 116.195],
     difficulty: "入门",
     distance: "约12公里",
     elevation: "约500米",
@@ -379,21 +354,19 @@ const ROUTES = [
         flowers: [],
         fruits: [
           { name: "山楂", note: "沿线野山楂树" },
-          { name: "柿子", note: "秋天成熟" }
-        ]
+          { name: "柿子", note: "秋天成熟" },
+        ],
       },
       {
         season: "spring",
         months: [4, 5],
-        flowers: ["山桃花", "杏花"],
+        flowers: ["山桃花","杏花"],
         fruits: []
-      }
+      },
     ],
-    notes: "香山→八大处环线，北京最经典徒步路线之一。起点香山邮局，终点八大处公园",
-    "rlevel": 3,
-    "rlevel": 3,
+    rlevel: 3,
+    notes: "香山→八大处环线，北京最经典徒步路线之一。起点香山邮局，终点八大处公园"
   },
-
   {
     id: "xiangshan-gongyuan",
     name: "香山公园",
@@ -408,21 +381,19 @@ const ROUTES = [
         months: [10, 11],
         flowers: [],
         fruits: [
-          { name: "柿子", note: "香山后山野柿子" }
-        ]
+          { name: "柿子", note: "香山后山野柿子" },
+        ],
       },
       {
         season: "spring",
         months: [4, 5],
-        flowers: ["山桃花", "杏花", "丁香"],
+        flowers: ["山桃花","杏花","丁香"],
         fruits: []
-      }
+      },
     ],
-    notes: "香山公园内环线，适合全家出行。红叶节期间人流量大，建议早出发",
-    "rlevel": 1,
-    "rlevel": 1,
+    rlevel: 1,
+    notes: "香山公园内环线，适合全家出行。红叶节期间人流量大，建议早出发"
   },
-
   {
     id: "miaofengshan",
     name: "妙峰山",
@@ -437,8 +408,8 @@ const ROUTES = [
         months: [7, 8],
         flowers: ["野菊花"],
         fruits: [
-          { name: "野猕猴桃", note: "8-9月" }
-        ]
+          { name: "野猕猴桃", note: "8-9月" },
+        ],
       },
       {
         season: "autumn",
@@ -447,15 +418,13 @@ const ROUTES = [
         fruits: [
           { name: "核桃", note: "9月采收" },
           { name: "栗子", note: "9-10月" },
-          { name: "酸枣", note: "满山遍野" }
-        ]
-      }
+          { name: "酸枣", note: "满山遍野" },
+        ],
+      },
     ],
-    notes: "京西古道，主峰海拔1291米。玫瑰谷是其特色，6月花开",
-    "rlevel": 5,
-    "rlevel": 5,
+    rlevel: 5,
+    notes: "京西古道，主峰海拔1291米。玫瑰谷是其特色，6月花开"
   },
-
   {
     id: "baihuashan",
     name: "百花山",
@@ -468,23 +437,21 @@ const ROUTES = [
       {
         season: "summer",
         months: [6, 7, 8],
-        flowers: ["高山草甸野花", "野菊花", "金莲花"],
+        flowers: ["高山草甸野花","野菊花","金莲花"],
         fruits: [
           { name: "野草莓", note: "6-7月" },
-          { name: "野猕猴桃", note: "9月" }
-        ]
-      }
+          { name: "野猕猴桃", note: "9月" },
+        ],
+      },
     ],
-    notes: "北京第三高峰，海拔1991米。高山草甸为华北地区代表景观",
-    "rlevel": 6,
-    "rlevel": 6,
+    rlevel: 6,
+    notes: "北京第三高峰，海拔1991米。高山草甸为华北地区代表景观"
   },
-
   {
     id: "doufugou",
     name: "豆腐沟-东直门",
     location: "怀柔区",
-    coordinates: [40.4567, 116.6050],
+    coordinates: [40.4567, 116.605],
     difficulty: "入门",
     distance: "约9公里",
     elevation: "约300米",
@@ -492,7 +459,7 @@ const ROUTES = [
       {
         season: "spring",
         months: [4, 5],
-        flowers: ["山桃花", "杏花", "梨花"],
+        flowers: ["山桃花","杏花","梨花"],
         fruits: []
       },
       {
@@ -501,20 +468,18 @@ const ROUTES = [
         flowers: [],
         fruits: [
           { name: "红肖梨", note: "怀柔特产" },
-          { name: "核桃", note: "9月" }
-        ]
-      }
+          { name: "核桃", note: "9月" },
+        ],
+      },
     ],
-    notes: "怀柔经典徒步路线，沿沟谷而行，春季花海秋季采果",
-    "rlevel": 4,
-    "rlevel": 4,
+    rlevel: 4,
+    notes: "怀柔经典徒步路线，沿沟谷而行，春季花海秋季采果"
   },
-
   {
     id: "fenghuangling",
     name: "凤凰岭",
     location: "海淀区",
-    coordinates: [40.1052, 116.1000],
+    coordinates: [40.1052, 116.1],
     difficulty: "入门",
     distance: "约10公里",
     elevation: "约700米",
@@ -522,7 +487,7 @@ const ROUTES = [
       {
         season: "spring",
         months: [4, 5],
-        flowers: ["山桃花", "杏花"],
+        flowers: ["山桃花","杏花"],
         fruits: []
       },
       {
@@ -531,13 +496,12 @@ const ROUTES = [
         flowers: [],
         fruits: [
           { name: "山楂", note: "沿线野山楂" },
-          { name: "柿子", note: "秋天成熟" }
-        ]
-      }
+          { name: "柿子", note: "秋天成熟" },
+        ],
+      },
     ],
     notes: "海淀区苏家坨镇，京西小黄山之称。与妙峰山相邻，徒步者可串联两峰"
   },
-
   {
     id: "mutianyu",
     name: "慕田峪长城",
@@ -553,19 +517,19 @@ const ROUTES = [
         flowers: [],
         fruits: [
           { name: "山楂", note: "沿线野山楂树" },
-          { name: "板栗", note: "怀柔特产" }
-        ]
+          { name: "板栗", note: "怀柔特产" },
+        ],
       },
       {
         season: "spring",
         months: [4, 5],
-        flowers: ["山桃花", "杏花"],
+        flowers: ["山桃花","杏花"],
         fruits: []
-      }
+      },
     ],
     notes: "怀柔区渤海镇，著名长城段之一，植被茂密，春秋皆宜"
   }
-];
+]
 
 // Load flowers data from iNaturalist (enhanced flower period data)
 let FLOWERS_DATA = [];
@@ -852,7 +816,6 @@ const SEASON_NAMES = {
 
 let activeSeason = 'all';
 let activeRegion = 'all';
-let activeLevel = 'all';
 let activeRouteId = null;
 const markers = {};
 
@@ -874,31 +837,6 @@ ROUTES.forEach(route => {
   markers[route.id] = marker;
 });
 
-
-// Read level from URL params on load
-(function readLevelFromURL() {
-  const params = new URLSearchParams(window.location.search);
-  const level = params.get('level');
-  if (level) {
-    activeLevel = level;
-    const btn = document.querySelector('.level-filters .filter-btn[data-level="' + level + '"]');
-    if (btn) {
-      document.querySelectorAll('.level-filters .filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    }
-  }
-})();
-
-// Level filter buttons
-document.querySelectorAll('.level-filters .filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.level-filters .filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    activeLevel = btn.dataset.level;
-    renderRouteList();
-    updateMarkers();
-  });
-});
 // Season filter buttons
 document.querySelectorAll('.season-filters .filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -947,7 +885,6 @@ function getFruitsForRoute(route) {
 
 function matchesFilter(route) {
   if (activeRegion !== 'all' && route.location !== activeRegion) return false;
-  if (activeLevel !== 'all' && String(route.rlevel) !== activeLevel) return false;
   if (activeSeason !== 'all') {
     const hasSeason = route.seasons.some(s => s.season === activeSeason);
     if (!hasSeason) return false;
