@@ -917,8 +917,13 @@ function renderRouteList() {
       `<span class="season-tag ${s.season}">${getSeasonIcon(s.season)} ${getSeasonLabel(s.season)}</span>`
     ).join('');
     const activeClass = route.id === activeRouteId ? ' active' : '';
+    // All unique flower names across seasons
+    const allFlowers = [...new Set(route.seasons.flatMap(s => s.flowers))];
+    const flowerTags = allFlowers.slice(0, 4).map(f =>
+      `<span class="flower-tag" onclick="event.stopPropagation(); showFlowerPhoto('${f.replace(/'/g,"\\'")}')">${f}</span>`
+    ).join('、');
     const fruitTags = fruits.slice(0, 3).map(f =>
-      `<span class="fruit-tag">🍎 ${f.name}</span>`
+      `<span class="fruit-tag" onclick="event.stopPropagation(); showFlowerPhoto('${f.name.replace(/'/g,"\\'")}')">🍎 ${f.name}</span>`
     ).join(' ');
     return `
       <div class="route-card${activeClass}" onclick="showRouteDetail('${route.id}')">
@@ -932,7 +937,8 @@ function renderRouteList() {
         <div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:4px;align-items:center;">
           ${seasonTags}
         </div>
-        ${fruits.length > 0 ? `<div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:4px;">${fruitTags}${fruits.length > 3 ? `<span style="font-size:11px;color:#888;">+${fruits.length - 3}</span>` : ''}</div>` : ''}
+        ${flowerTags ? `<div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:4px;font-size:12px;color:#c2185b;">${flowerTags}</div>` : ''}
+        ${fruits.length > 0 ? `<div style="margin-top:4px;display:flex;flex-wrap:wrap;gap:4px;">${fruitTags}${fruits.length > 3 ? `<span style="font-size:11px;color:#888;">+${fruits.length - 3}</span>` : ''}</div>` : ''}
       </div>
     `;
   }).join('');

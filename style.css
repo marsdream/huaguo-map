@@ -172,6 +172,7 @@ main {
 .fruit-tag {
   font-size: 12px;
   color: var(--primary);
+  cursor: pointer;
 }
 
 /* Map */
