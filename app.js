@@ -413,9 +413,10 @@ async function showFlowerPhoto(name) {
   els.modal.classList.add('show');
 
   try {
+    // Look up scientific name from flowers.json
     const rec = findFlowerRecord(name);
-    const query = rec && rec.scientificName ? rec.scientificName : name;
-    const encoded = encodeURIComponent(query);
+    const sci = (rec && rec.scientificName) ? rec.scientificName : name;
+    const encoded = encodeURIComponent(sci);
 
     const resp = await fetch(
       `https://api.inaturalist.org/v1/observations?` +
@@ -739,13 +740,20 @@ function showRouteDetail(id) {
   const seasonsHtml = route.seasons.map(s => {
     const flowersHtml = s.flowers.length > 0
       ? `<li>🌸 可看花：${s.flowers.map(f => {
+        const rec = findFlowerRecord(f);
+        const sci = rec && rec.scientificName ? `(${rec.scientificName})` : '';
         const period = getFlowerPeriod(f);
-        const label = period ? `${f}（${period}）` : f;
-        return `<span class="flower-tag" onclick="showFlowerPhoto('${f.replace(/'/g,"\\'")}')" title="查看图片">${label}</span>`;
+        const label = period ? `${f}${sci}（${period}）` : `${f}${sci}`;
+        return `<span class="flower-tag" onclick="showFlowerPhoto('${f.replace(/'/g,"\\'")}')" title="查看iNaturalist图片">${label}</span>`;
       }).join('、')}</li>`
       : '';
     const fruitsHtml = s.fruits.length > 0
-      ? `<li>🍎 可采集：${s.fruits.map(f => f.name + (f.note ? `（${f.note}）` : '')).join('、')}</li>`
+      ? `<li>🍎 可采集：${s.fruits.map(f => {
+        const rec = findFlowerRecord(f.name);
+        const sci = rec && rec.scientificName ? `(${rec.scientificName})` : '';
+        const note = f.note ? `（${f.note}）` : '';
+        return `<span class="flower-tag" onclick="showFlowerPhoto('${f.name.replace(/'/g,"\\'")}')" title="查看iNaturalist图片">${f.name}${sci}${note}</span>`;
+      }).join('、')}</li>`
       : '';
     const months = s.months.map(m => ['元','二','三','四','五','六','七','八','九','十','十一','十二'][m-1] + '月').join('、');
     return `
