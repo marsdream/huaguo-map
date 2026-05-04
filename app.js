@@ -578,6 +578,10 @@ function getFlowerEls() {
 function closeFlowerPhoto() {
   const els = getFlowerEls();
   if (els.modal) els.modal.classList.remove('show');
+  // Zoom map back in from 13 → 14 after closing flower modal
+  if (typeof map !== 'undefined') {
+    map.setZoom(14);
+  }
 }
 
 async function showFlowerPhoto(name) {
