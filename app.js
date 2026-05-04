@@ -320,8 +320,9 @@ const ROUTES = [
 // Leaflet map init
 const map = L.map('map').setView([40.15, 116.3], 9);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '© OpenStreetMap',
+L.tileLayer('https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}', {
+  subdomains: '1234',
+  attribution: '© 高德地图',
   maxZoom: 18
 }).addTo(map);
 
