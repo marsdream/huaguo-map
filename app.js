@@ -417,7 +417,7 @@ const ROUTES = [
     id: "miaofengshan",
     name: "妙峰山",
     location: "门头沟区",
-    coordinates: [39.9744, 116.5031],
+    coordinates: [40.0682, 116.0254],
     difficulty: "中等",
     distance: "约15公里",
     elevation: "约900米",
@@ -492,6 +492,62 @@ const ROUTES = [
       }
     ],
     notes: "怀柔经典徒步路线，沿沟谷而行，春季花海秋季采果"
+  },
+
+  {
+    id: "fenghuangling",
+    name: "凤凰岭",
+    location: "海淀区",
+    coordinates: [40.1052, 116.1000],
+    difficulty: "入门",
+    distance: "约10公里",
+    elevation: "约700米",
+    seasons: [
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山桃花", "杏花"],
+        fruits: []
+      },
+      {
+        season: "autumn",
+        months: [10, 11],
+        flowers: [],
+        fruits: [
+          { name: "山楂", note: "沿线野山楂" },
+          { name: "柿子", note: "秋天成熟" }
+        ]
+      }
+    ],
+    notes: "海淀区苏家坨镇，京西小黄山之称。与妙峰山相邻，徒步者可串联两峰"
+  },
+
+  {
+    id: "mutianyu",
+    name: "慕田峪长城",
+    location: "怀柔区",
+    coordinates: [40.4311, 116.5731],
+    difficulty: "入门",
+    distance: "约8公里",
+    elevation: "约500米",
+    seasons: [
+      {
+        season: "autumn",
+        months: [10, 11],
+        flowers: [],
+        fruits: [
+          { name: "山楂", note: "沿线野山楂树" },
+          { name: "板栗", note: "怀柔特产" }
+        ]
+      },
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山桃花", "杏花"],
+        fruits: []
+      }
+    ],
+    notes: "怀柔区渤海镇，著名长城段之一，植被茂密，春秋皆宜"
   }
 ];
 
