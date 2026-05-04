@@ -278,6 +278,16 @@ footer {
   flex-shrink: 0;
 }
 
+.modal-notes {
+  margin-top: 16px;
+  padding: 12px;
+  background: #f8f6f1;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+}
+
 footer a { color: var(--primary); }
 
 /* Responsive */
