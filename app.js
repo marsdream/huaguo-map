@@ -276,28 +276,6 @@ const ROUTES = [
       }
     ],
     notes: "灵山风景区，冬季雪景出名，夏季草甸花海。起点：江水河村"
-  
-  },
-  {
-    id: "laoling",
-    name: "老岭-刘家店",
-    location: "平谷区",
-    coordinates: [40.1531, 117.1231],
-    difficulty: "入门",
-    distance: "约7公里",
-    elevation: "约200米",
-    seasons: [
-      {
-        season: "autumn",
-        months: [10],
-        flowers: [],
-        fruits: [
-          { name: "核桃", note: "平谷核桃" },
-          { name: "栗子", note: "" }
-        ]
-      }
-    ],
-    notes: "平谷区，秋季采摘核桃栗子的好去处"
   },
   {
     id: "jiuyishan",
