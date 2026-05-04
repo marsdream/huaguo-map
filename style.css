@@ -372,7 +372,7 @@ footer a { color: var(--primary); }
   align-items: flex-start;
   flex-wrap: wrap;
 }
-.season-filters, .region-filters {
+.season-filters, .region-filters, .level-filters {
   display: flex;
   gap: 6px;
   flex-wrap: wrap;

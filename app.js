@@ -30,6 +30,7 @@ const ROUTES = [
     ],
     notes: "起点：河防口隧道。驴友称为「北京小魔法森林」，溪流潺潺，爬升不高",
     "rlevel": 4,
+    "rlevel": 4,
   
   },
   {
@@ -51,6 +52,7 @@ const ROUTES = [
       }
     ],
     notes: "起点：塔儿寺村。海拔1915米，京西徒步枢纽，野韭菜坡是其标志",
+    "rlevel": 7,
     "rlevel": 7,
   
   },
@@ -82,6 +84,7 @@ const ROUTES = [
     ],
     notes: "北京第一高峰，海拔2303米。起点下马威（GPS: 39.9985, 115.4344），或聚灵峡景区",
     "rlevel": 8,
+    "rlevel": 8,
   
   },
   {
@@ -105,6 +108,7 @@ const ROUTES = [
     ],
     notes: "主峰海拔1737米，京西古道驿站，被誉为「驴友后花园」",
     "rlevel": 6,
+    "rlevel": 6,
   
   },
   {
@@ -127,6 +131,7 @@ const ROUTES = [
     ],
     notes: "又称白虎涧森林公园，地址：昌平区阳坊镇后二路。「燕平八景」之一",
     "rlevel": 2,
+    "rlevel": 2,
   
   },
   {
@@ -148,6 +153,7 @@ const ROUTES = [
       }
     ],
     notes: "延庆白河堡至密云水库段，著名的「白河徒步道」",
+    "rlevel": 4,
     "rlevel": 4,
   
   },
@@ -185,6 +191,7 @@ const ROUTES = [
     ],
     notes: "海拔860米，延庆深山处女地，四季皆宜，高山草甸是其标志景观",
     "rlevel": 4,
+    "rlevel": 4,
   
   },
   {
@@ -206,6 +213,7 @@ const ROUTES = [
       }
     ],
     notes: "主峰海拔1414米，京郊「小黄山」，地址：密云区与怀柔区交界",
+    "rlevel": 5,
     "rlevel": 5,
   
   },
@@ -235,6 +243,7 @@ const ROUTES = [
     ],
     notes: "戒台寺周边，千年古寺，历史悠久",
     "rlevel": 3,
+    "rlevel": 3,
   
   },
   {
@@ -260,6 +269,7 @@ const ROUTES = [
       }
     ],
     notes: "北京最著名野长城段，冬季可攀冰，需一定户外经验",
+    "rlevel": 8,
     "rlevel": 8,
   
   },
@@ -287,6 +297,7 @@ const ROUTES = [
     ],
     notes: "灵山风景区，冬季雪景出名，夏季草甸花海。起点：江水河村",
     "rlevel": 7,
+    "rlevel": 7,
   },
   {
     id: "jiuyishan",
@@ -305,6 +316,7 @@ const ROUTES = [
       }
     ],
     notes: "北京最高的烽火台（海拔1000米+），春天山花遍野",
+    "rlevel": 6,
     "rlevel": 6,
   },
   {
@@ -327,6 +339,7 @@ const ROUTES = [
     ],
     notes: "夏季玩水的好地方，溪流清澈",
     "rlevel": 3,
+    "rlevel": 3,
   },
   {
     id: "xianshi",
@@ -347,6 +360,7 @@ const ROUTES = [
       }
     ],
     notes: "昌平山区，春季挖野菜的好去处",
+    "rlevel": 3,
     "rlevel": 3,
   },
 
@@ -377,6 +391,7 @@ const ROUTES = [
     ],
     notes: "香山→八大处环线，北京最经典徒步路线之一。起点香山邮局，终点八大处公园",
     "rlevel": 3,
+    "rlevel": 3,
   },
 
   {
@@ -404,6 +419,7 @@ const ROUTES = [
       }
     ],
     notes: "香山公园内环线，适合全家出行。红叶节期间人流量大，建议早出发",
+    "rlevel": 1,
     "rlevel": 1,
   },
 
@@ -437,6 +453,7 @@ const ROUTES = [
     ],
     notes: "京西古道，主峰海拔1291米。玫瑰谷是其特色，6月花开",
     "rlevel": 5,
+    "rlevel": 5,
   },
 
   {
@@ -459,6 +476,7 @@ const ROUTES = [
       }
     ],
     notes: "北京第三高峰，海拔1991米。高山草甸为华北地区代表景观",
+    "rlevel": 6,
     "rlevel": 6,
   },
 
@@ -488,6 +506,7 @@ const ROUTES = [
       }
     ],
     notes: "怀柔经典徒步路线，沿沟谷而行，春季花海秋季采果",
+    "rlevel": 4,
     "rlevel": 4,
   },
 
@@ -833,6 +852,7 @@ const SEASON_NAMES = {
 
 let activeSeason = 'all';
 let activeRegion = 'all';
+let activeLevel = 'all';
 let activeRouteId = null;
 const markers = {};
 
@@ -854,6 +874,31 @@ ROUTES.forEach(route => {
   markers[route.id] = marker;
 });
 
+
+// Read level from URL params on load
+(function readLevelFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const level = params.get('level');
+  if (level) {
+    activeLevel = level;
+    const btn = document.querySelector('.level-filters .filter-btn[data-level="' + level + '"]');
+    if (btn) {
+      document.querySelectorAll('.level-filters .filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  }
+})();
+
+// Level filter buttons
+document.querySelectorAll('.level-filters .filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.level-filters .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeLevel = btn.dataset.level;
+    renderRouteList();
+    updateMarkers();
+  });
+});
 // Season filter buttons
 document.querySelectorAll('.season-filters .filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -902,6 +947,7 @@ function getFruitsForRoute(route) {
 
 function matchesFilter(route) {
   if (activeRegion !== 'all' && route.location !== activeRegion) return false;
+  if (activeLevel !== 'all' && String(route.rlevel) !== activeLevel) return false;
   if (activeSeason !== 'all') {
     const hasSeason = route.seasons.some(s => s.season === activeSeason);
     if (!hasSeason) return false;
