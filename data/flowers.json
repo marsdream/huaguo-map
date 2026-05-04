@@ -1,0 +1,1179 @@
+{
+  "source": "iNaturalist API (CC BY-NC 4.0)",
+  "dataUrl": "https://api.inaturalist.org/v1/observations",
+  "license": "CC BY-NC 4.0",
+  "lastUpdated": "2026-05-04",
+  "count": 116,
+  "flowers": [
+    {
+      "name": "丁香属",
+      "scientificName": "Syringa",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "东苍耳",
+      "scientificName": "Xanthium orientale",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "中国旋花",
+      "scientificName": "Convolvulus chinensis",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "五叶地锦",
+      "scientificName": "Parthenocissus quinquefolia",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "兔儿伞",
+      "scientificName": "Syneilesis aconitifolia",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "兴安胡枝子",
+      "scientificName": "Lespedeza daurica",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "内折香茶菜",
+      "scientificName": "Isodon inflexus",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "分支木贼",
+      "scientificName": "Equisetum ramosissimum",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "刺柏属",
+      "scientificName": "Juniperus",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "刺槐",
+      "scientificName": "Robinia pseudoacacia",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "加杨",
+      "scientificName": "Populus × canadensis",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "北京丁香",
+      "scientificName": "Syringa reticulata",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "北京丁香",
+      "scientificName": "Syringa reticulata pekinensis",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "华北落叶松",
+      "scientificName": "Larix gmelinii principis-rupprechtii",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "南艾蒿",
+      "scientificName": "Artemisia verlotiorum",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "南蛇藤",
+      "scientificName": "Celastrus orbiculatus",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ],
+      "fruitPeriod": "9-10月",
+      "note": "可采摘"
+    },
+    {
+      "name": "双花堇菜",
+      "scientificName": "Viola biflora",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "变叶木属",
+      "scientificName": "Codiaeum",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "君迁子",
+      "scientificName": "Diospyros lotus",
+      "seasons": [
+        "spring",
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "4-5月",
+        "8-9月"
+      ],
+      "fruitPeriod": "9-10月",
+      "note": "可采摘"
+    },
+    {
+      "name": "喜林芋属",
+      "scientificName": "Philodendron",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "地丁草",
+      "scientificName": "Corydalis bungeana",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "地梢瓜",
+      "scientificName": "Cynanchum thesioides",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "垂柳",
+      "scientificName": "Salix babylonica",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "夏至草",
+      "scientificName": "Lagopsis supina",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "大油芒属",
+      "scientificName": "Spodiopogon",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "天名精",
+      "scientificName": "Carpesium abrotanoides",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "天门冬属",
+      "scientificName": "Asparagus",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "太平花",
+      "scientificName": "Philadelphus pekinensis",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "女贞",
+      "scientificName": "Ligustrum lucidum",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "委陵菜属",
+      "scientificName": "Potentilla",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "小画眉草",
+      "scientificName": "Eragrostis minor",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "小眼子菜",
+      "scientificName": "Potamogeton pusillus",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "小花溲疏",
+      "scientificName": "Deutzia parviflora",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "小蓬草",
+      "scientificName": "Erigeron canadensis",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "小青杨",
+      "scientificName": "Populus pseudosimonii",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "尖叶铁扫帚",
+      "scientificName": "Lespedeza juncea",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "尖裂假还阳参",
+      "scientificName": "Crepidiastrum sonchifolium",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "山梅花属",
+      "scientificName": "Philadelphus",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "山茱萸",
+      "scientificName": "Cornus officinalis",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "忍冬",
+      "scientificName": "Lonicera japonica",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "悬铃木属",
+      "scientificName": "Platanus",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "扇唇狸藻",
+      "scientificName": "Utricularia tenuicaulis",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "播娘蒿",
+      "scientificName": "Descurainia sophia",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "旋覆花",
+      "scientificName": "Inula japonica",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "无患子目",
+      "scientificName": "Sapindales",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "朝天委陵菜",
+      "scientificName": "Potentilla supina",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "杠柳",
+      "scientificName": "Periploca sepium",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "杨属",
+      "scientificName": "Populus",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "松属",
+      "scientificName": "Pinus",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "板栗",
+      "scientificName": "Castanea mollissima",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "林地鼠尾草",
+      "scientificName": "Salvia nemorosa",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "枸杞",
+      "scientificName": "Lycium chinense",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "桃叶鸦葱",
+      "scientificName": "Scorzonera sinensis",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "棉团铁线莲",
+      "scientificName": "Clematis hexapetala",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "棣棠花",
+      "scientificName": "Kerria japonica",
+      "seasons": [
+        "spring",
+        "summer"
+      ],
+      "flowerPeriod": [
+        "4-5月",
+        "6-7月"
+      ]
+    },
+    {
+      "name": "楸子",
+      "scientificName": "Malus prunifolia",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "槲寄生",
+      "scientificName": "Viscum coloratum",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "毛樱桃",
+      "scientificName": "Prunus tomentosa",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "水毛茛",
+      "scientificName": "Ranunculus bungei",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "水蒿",
+      "scientificName": "Artemisia selengensis",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "油松",
+      "scientificName": "Pinus tabuliformis",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "浮萍属",
+      "scientificName": "Lemna",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "满江红",
+      "scientificName": "Azolla pinnata",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "灰莉属",
+      "scientificName": "Fagraea",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "狗尾草",
+      "scientificName": "Setaria viridis",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "狼尾花",
+      "scientificName": "Lysimachia barystachys",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "狼尾草",
+      "scientificName": "Cenchrus alopecuroides",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "白头翁",
+      "scientificName": "Pulsatilla chinensis",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "白蜡树",
+      "scientificName": "Fraxinus chinensis",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "白车轴草",
+      "scientificName": "Trifolium repens",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "益母草属",
+      "scientificName": "Leonurus",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "石生蝇子草",
+      "scientificName": "Silene tatarinowii",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "硬毛棘豆",
+      "scientificName": "Oxytropis hirta",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "穿龙薯蓣",
+      "scientificName": "Dioscorea nipponica",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "竹节秋海棠",
+      "scientificName": "Begonia maculata",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "紫菀属",
+      "scientificName": "Aster",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "紫萍",
+      "scientificName": "Spirodela polyrhiza",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "紫薇",
+      "scientificName": "Lagerstroemia indica",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "红蓼",
+      "scientificName": "Persicaria orientalis",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "绣球属",
+      "scientificName": "Hydrangea",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "美国红梣",
+      "scientificName": "Fraxinus pennsylvanica",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "美蔷薇",
+      "scientificName": "Rosa bella",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "翅果菊",
+      "scientificName": "Lactuca indica",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "臭椿",
+      "scientificName": "Ailanthus altissima",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "花椒",
+      "scientificName": "Zanthoxylum bungeanum",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "花椒属",
+      "scientificName": "Zanthoxylum",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "苦苣菜",
+      "scientificName": "Sonchus oleraceus",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "苹果属",
+      "scientificName": "Malus",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "茉莉花",
+      "scientificName": "Jasminum sambac",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "茜草",
+      "scientificName": "Rubia cordifolia",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "荇菜",
+      "scientificName": "Nymphoides peltata",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "草地早熟禾",
+      "scientificName": "Poa pratensis",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "荔枝草",
+      "scientificName": "Salvia plebeia",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "菜蓟族",
+      "scientificName": "Cardueae",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "萝藦",
+      "scientificName": "Cynanchum rostellatum",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "葎草",
+      "scientificName": "Humulus scandens",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "蔓孩儿参",
+      "scientificName": "Pseudostellaria davidii",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "蔷薇属",
+      "scientificName": "Rosa",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "薄皮木",
+      "scientificName": "Leptodermis oblonga",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "薯蓣",
+      "scientificName": "Dioscorea polystachya",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "虎掌",
+      "scientificName": "Pinellia pedatisecta",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "败酱属",
+      "scientificName": "Patrinia",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "酸模叶蓼",
+      "scientificName": "Persicaria lapathifolia",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "酸浆",
+      "scientificName": "Alkekengi officinarum",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "野鸢尾",
+      "scientificName": "Iris dichotoma",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "金银忍冬",
+      "scientificName": "Lonicera maackii",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "金鱼藻",
+      "scientificName": "Ceratophyllum demersum",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "阜平黄堇",
+      "scientificName": "Corydalis wilfordi",
+      "seasons": [
+        "spring"
+      ],
+      "flowerPeriod": [
+        "4-5月"
+      ]
+    },
+    {
+      "name": "雪松属",
+      "scientificName": "Cedrus",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "香丝草",
+      "scientificName": "Erigeron bonariensis",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "香薷属",
+      "scientificName": "Elsholtzia",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "鬼针草属",
+      "scientificName": "Bidens",
+      "seasons": [
+        "summer",
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "6-7月",
+        "8-9月"
+      ]
+    },
+    {
+      "name": "鸢尾属",
+      "scientificName": "Iris",
+      "seasons": [
+        "autumn"
+      ],
+      "flowerPeriod": [
+        "8-9月"
+      ]
+    },
+    {
+      "name": "鸭跖草",
+      "scientificName": "Commelina communis",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "齿翅蓼",
+      "scientificName": "Fallopia dentatoalata",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    },
+    {
+      "name": "齿裂大戟",
+      "scientificName": "Euphorbia dentata",
+      "seasons": [
+        "summer"
+      ],
+      "flowerPeriod": [
+        "6-7月"
+      ]
+    }
+  ]
+}
