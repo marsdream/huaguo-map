@@ -356,6 +356,142 @@ const ROUTES = [
       }
     ],
     notes: "昌平山区，春季挖野菜的好去处"
+  },
+
+  {
+    id: "xiangbala",
+    name: "香八拉",
+    location: "海淀区·石景山区",
+    coordinates: [39.9786, 116.1950],
+    difficulty: "入门",
+    distance: "约12公里",
+    elevation: "约500米",
+    seasons: [
+      {
+        season: "autumn",
+        months: [10, 11],
+        flowers: [],
+        fruits: [
+          { name: "山楂", note: "沿线野山楂树" },
+          { name: "柿子", note: "秋天成熟" }
+        ]
+      },
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山桃花", "杏花"],
+        fruits: []
+      }
+    ],
+    notes: "香山→八大处环线，北京最经典徒步路线之一。起点香山邮局，终点八大处公园"
+  },
+
+  {
+    id: "xiangshan-gongyuan",
+    name: "香山公园",
+    location: "海淀区",
+    coordinates: [39.9911, 116.1931],
+    difficulty: "入门",
+    distance: "约6公里",
+    elevation: "约400米",
+    seasons: [
+      {
+        season: "autumn",
+        months: [10, 11],
+        flowers: [],
+        fruits: [
+          { name: "柿子", note: "香山后山野柿子" }
+        ]
+      },
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山桃花", "杏花", "丁香"],
+        fruits: []
+      }
+    ],
+    notes: "香山公园内环线，适合全家出行。红叶节期间人流量大，建议早出发"
+  },
+
+  {
+    id: "miaofengshan",
+    name: "妙峰山",
+    location: "门头沟区",
+    coordinates: [39.9744, 116.5031],
+    difficulty: "中等",
+    distance: "约15公里",
+    elevation: "约900米",
+    seasons: [
+      {
+        season: "summer",
+        months: [7, 8],
+        flowers: ["野菊花"],
+        fruits: [
+          { name: "野猕猴桃", note: "8-9月" }
+        ]
+      },
+      {
+        season: "autumn",
+        months: [9, 10],
+        flowers: [],
+        fruits: [
+          { name: "核桃", note: "9月采收" },
+          { name: "栗子", note: "9-10月" },
+          { name: "酸枣", note: "满山遍野" }
+        ]
+      }
+    ],
+    notes: "京西古道，主峰海拔1291米。玫瑰谷是其特色，6月花开"
+  },
+
+  {
+    id: "baihuashan",
+    name: "百花山",
+    location: "门头沟区",
+    coordinates: [39.8678, 115.5967],
+    difficulty: "中等",
+    distance: "约10公里",
+    elevation: "约800米",
+    seasons: [
+      {
+        season: "summer",
+        months: [6, 7, 8],
+        flowers: ["高山草甸野花", "野菊花", "金莲花"],
+        fruits: [
+          { name: "野草莓", note: "6-7月" },
+          { name: "野猕猴桃", note: "9月" }
+        ]
+      }
+    ],
+    notes: "北京第三高峰，海拔1991米。高山草甸为华北地区代表景观"
+  },
+
+  {
+    id: "doufugou",
+    name: "豆腐沟-东直门",
+    location: "怀柔区",
+    coordinates: [40.4567, 116.6050],
+    difficulty: "入门",
+    distance: "约9公里",
+    elevation: "约300米",
+    seasons: [
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山桃花", "杏花", "梨花"],
+        fruits: []
+      },
+      {
+        season: "autumn",
+        months: [10],
+        flowers: [],
+        fruits: [
+          { name: "红肖梨", note: "怀柔特产" },
+          { name: "核桃", note: "9月" }
+        ]
+      }
+    ],
+    notes: "怀柔经典徒步路线，沿沟谷而行，春季花海秋季采果"
   }
 ];
 
@@ -597,6 +733,11 @@ function loadOSMTrailsForRoute() {
 
   // 如果当前显示的就是这条路线，且已加载过，不重复加载
   if (_activeOsmRouteId === activeRouteId && _osmTrailsLayer) return;
+
+  // 关闭弹窗，让用户直接看到地图上加载的路径
+  document.getElementById('modal').classList.remove('show');
+  activeRouteId = null;
+  renderRouteList();
 
   const [lat, lng] = route.coordinates;
   const delta = 0.05; // ±0.05度 ≈ ±5km
