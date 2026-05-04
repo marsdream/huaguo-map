@@ -364,7 +364,7 @@ const ROUTES = [
         fruits: []
       },
     ],
-    rlevel: 3,
+    rlevel: 2,
     notes: "香山→八大处环线，北京最经典徒步路线之一。起点香山邮局，终点八大处公园"
   },
   {
@@ -422,7 +422,7 @@ const ROUTES = [
         ],
       },
     ],
-    rlevel: 5,
+    rlevel: 1,
     notes: "京西古道，主峰海拔1291米。玫瑰谷是其特色，6月花开"
   },
   {
@@ -444,7 +444,7 @@ const ROUTES = [
         ],
       },
     ],
-    rlevel: 6,
+    rlevel: 1,
     notes: "北京第三高峰，海拔1991米。高山草甸为华北地区代表景观"
   },
   {
@@ -472,7 +472,7 @@ const ROUTES = [
         ],
       },
     ],
-    rlevel: 4,
+    rlevel: 3,
     notes: "怀柔经典徒步路线，沿沟谷而行，春季花海秋季采果"
   },
   {
@@ -500,6 +500,7 @@ const ROUTES = [
         ],
       },
     ],
+    rlevel: 2,
     notes: "海淀区苏家坨镇，京西小黄山之称。与妙峰山相邻，徒步者可串联两峰"
   },
   {
@@ -527,6 +528,7 @@ const ROUTES = [
         fruits: []
       },
     ],
+    rlevel: 2,
     notes: "怀柔区渤海镇，著名长城段之一，植被茂密，春秋皆宜"
   }
 ]
