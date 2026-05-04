@@ -383,34 +383,36 @@ function getFlowerPeriod(name) {
 loadFlowersData();
 
 // ─── Flower photo lightbox ────────────────────────────────────────────────
-let flowerModalEl, flowerGalleryEl, flowerLoadingEl, flowerErrorEl;
+
+function getFlowerEls() {
+  return {
+    modal:    document.getElementById('flowerModal'),
+    gallery:  document.getElementById('flowerModalGallery'),
+    loading:  document.getElementById('flowerModalLoading'),
+    error:    document.getElementById('flowerModalError'),
+    title:    document.getElementById('flowerModalTitle'),
+  };
+}
 
 function closeFlowerPhoto() {
-  if (!flowerModalEl) {
-    flowerModalEl = document.getElementById('flowerModal');
-    flowerGalleryEl = document.getElementById('flowerModalGallery');
-    flowerLoadingEl = document.getElementById('flowerModalLoading');
-    flowerErrorEl = document.getElementById('flowerModalError');
-  }
-  flowerModalEl.classList.remove('show');
+  const els = getFlowerEls();
+  if (els.modal) els.modal.classList.remove('show');
 }
 
 async function showFlowerPhoto(name) {
-  if (!flowerModalEl) {
-    flowerModalEl = document.getElementById('flowerModal');
-    flowerGalleryEl = document.getElementById('flowerModalGallery');
-    flowerLoadingEl = document.getElementById('flowerModalLoading');
-    flowerErrorEl = document.getElementById('flowerModalError');
+  const els = getFlowerEls();
+  if (!els.modal || !els.gallery || !els.loading || !els.error || !els.title) {
+    console.warn('[FlowerPhoto] Modal elements not found — index.html may not be deployed');
+    return;
   }
 
-  document.getElementById('flowerModalTitle').textContent = '🌸 ' + name;
-  flowerGalleryEl.innerHTML = '';
-  flowerLoadingEl.style.display = 'flex';
-  flowerErrorEl.style.display = 'none';
-  flowerModalEl.classList.add('show');
+  els.title.textContent = '🌸 ' + name;
+  els.gallery.innerHTML = '';
+  els.loading.style.display = 'flex';
+  els.error.style.display = 'none';
+  els.modal.classList.add('show');
 
   try {
-    // Try scientific name first, then common name
     const rec = findFlowerRecord(name);
     const query = rec && rec.scientificName ? rec.scientificName : name;
     const encoded = encodeURIComponent(query);
@@ -423,18 +425,16 @@ async function showFlowerPhoto(name) {
     const json = await resp.json();
     const results = json.results || [];
 
-    flowerLoadingEl.style.display = 'none';
+    els.loading.style.display = 'none';
 
     if (results.length === 0) {
-      flowerErrorEl.style.display = 'block';
+      els.error.style.display = 'block';
       return;
     }
 
-    // Build gallery: up to 6 photos
     const html = results.map(obs => {
       if (!obs.photos || obs.photos.length === 0) return '';
       const photo = obs.photos[0];
-      // photo.url is the original; use medium for display
       const imgUrl = photo.url.replace('/square.', '/medium.');
       const credit = photo.attribution || 'iNaturalist';
       const inatUrl = obs.uri || 'https://www.inaturalist.org/observations';
@@ -445,21 +445,23 @@ async function showFlowerPhoto(name) {
     }).join('');
 
     if (html) {
-      flowerGalleryEl.innerHTML = html;
+      els.gallery.innerHTML = html;
     } else {
-      flowerErrorEl.style.display = 'block';
+      els.error.style.display = 'block';
     }
   } catch (e) {
-    console.warn('Flower photo fetch failed:', e);
-    flowerLoadingEl.style.display = 'none';
-    flowerErrorEl.style.display = 'block';
+    console.warn('[FlowerPhoto] Fetch failed:', e);
+    els.loading.style.display = 'none';
+    els.error.style.display = 'block';
   }
 }
 
-// Close flower modal events
-document.getElementById('flowerModalClose').addEventListener('click', closeFlowerPhoto);
-document.getElementById('flowerModal').addEventListener('click', e => {
-  if (e.target === document.getElementById('flowerModal')) closeFlowerPhoto();
+// Attach close events only when corresponding elements exist
+const _closeBtn = document.getElementById('flowerModalClose');
+const _modal    = document.getElementById('flowerModal');
+if (_closeBtn) _closeBtn.addEventListener('click', closeFlowerPhoto);
+if (_modal)    _modal.addEventListener('click', e => {
+  if (e.target === _modal) closeFlowerPhoto();
 });
 
 // Leaflet map init
