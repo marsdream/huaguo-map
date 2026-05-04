@@ -28,7 +28,7 @@ const ROUTES = [
         ]
       }
     ],
-    notes: "起点：河防口隧道。驴友称为"北京小魔法森林"，溪流潺潺，爬升不高"
+    notes: "起点：河防口隧道。驴友称为「北京小魔法森林」，溪流潺潺，爬升不高"
   },
   {
     id: "beiling-shan",
@@ -97,7 +97,7 @@ const ROUTES = [
         ]
       }
     ],
-    notes: "主峰海拔1737米，京西古道驿站，被誉为"驴友后花园""
+    notes: "主峰海拔1737米，京西古道驿站，被誉为「驴友后花园」"
   },
   {
     id: "houhuayuan",
@@ -117,7 +117,7 @@ const ROUTES = [
         ]
       }
     ],
-    notes: "又称白虎涧森林公园，地址：昌平区阳坊镇后二路。"燕平八景"之一"
+    notes: "又称白虎涧森林公园，地址：昌平区阳坊镇后二路。「燕平八景」之一"
   },
   {
     id: "baihe-xiagu",
@@ -137,7 +137,7 @@ const ROUTES = [
         ]
       }
     ],
-    notes: "延庆白河堡至密云水库段，著名的"白河徒步道""
+    notes: "延庆白河堡至密云水库段，著名的「白河徒步道」"
   },
   {
     id: "yudi-shan",
@@ -191,7 +191,7 @@ const ROUTES = [
         ]
       }
     ],
-    notes: "主峰海拔1414米，京郊"小黄山"，地址：密云区与怀柔区交界"
+    notes: "主峰海拔1414米，京郊「小黄山」，地址：密云区与怀柔区交界"
   },
   {
     id: "jsek-shan",
@@ -348,14 +348,46 @@ const ROUTES = [
   }
 ];
 
+// Load flowers data from iNaturalist (enhanced flower period data)
+let FLOWERS_DATA = [];
+let FLOWERS_LOADED = false;
+
+async function loadFlowersData() {
+  try {
+    const resp = await fetch('./data/flowers.json');
+    if (!resp.ok) throw new Error('Failed to load flowers.json');
+    const data = await resp.json();
+    FLOWERS_DATA = data.flowers || [];
+    FLOWERS_LOADED = true;
+  } catch (e) {
+    console.warn('flowers.json load failed:', e);
+  }
+}
+
+function findFlowerRecord(name) {
+  if (!FLOWERS_LOADED || !name) return null;
+  const n = name.toLowerCase();
+  for (const f of FLOWERS_DATA) {
+    if (f.name.toLowerCase().includes(n) || n.includes(f.name.toLowerCase())) return f;
+    if (f.scientificName && f.scientificName.toLowerCase().includes(n)) return f;
+  }
+  return null;
+}
+
+function getFlowerPeriod(name) {
+  const rec = findFlowerRecord(name);
+  if (rec && rec.flowerPeriod && rec.flowerPeriod.length > 0) return rec.flowerPeriod[0];
+  return null;
+}
+
+loadFlowersData();
+
 // Leaflet map init
 const map = L.map('map').setView([40.1, 116.2], 9);
 
-L.tileLayer('https://webrd01.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}', {
-  subdomains: '1234',
-  attribution: '© 高德地图',
-  maxZoom: 18,
-  errorTileUrl: 'https://wprd01.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}'
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap',
+  maxZoom: 18
 }).addTo(map);
 
 // Season colors
@@ -533,7 +565,10 @@ function showRouteDetail(id) {
 
   const seasonsHtml = route.seasons.map(s => {
     const flowersHtml = s.flowers.length > 0
-      ? `<li>🌸 可看花：${s.flowers.join('、')}</li>`
+      ? `<li>🌸 可看花：${s.flowers.map(f => {
+        const period = getFlowerPeriod(f);
+        return period ? `${f}（${period}）` : f;
+      }).join('、')}</li>`
       : '';
     const fruitsHtml = s.fruits.length > 0
       ? `<li>🍎 可采集：${s.fruits.map(f => f.name + (f.note ? `（${f.note}）` : '')).join('、')}</li>`
