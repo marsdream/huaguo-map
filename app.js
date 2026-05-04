@@ -382,6 +382,86 @@ function getFlowerPeriod(name) {
 
 loadFlowersData();
 
+// ─── Flower photo lightbox ────────────────────────────────────────────────
+let flowerModalEl, flowerGalleryEl, flowerLoadingEl, flowerErrorEl;
+
+function closeFlowerPhoto() {
+  if (!flowerModalEl) {
+    flowerModalEl = document.getElementById('flowerModal');
+    flowerGalleryEl = document.getElementById('flowerModalGallery');
+    flowerLoadingEl = document.getElementById('flowerModalLoading');
+    flowerErrorEl = document.getElementById('flowerModalError');
+  }
+  flowerModalEl.classList.remove('show');
+}
+
+async function showFlowerPhoto(name) {
+  if (!flowerModalEl) {
+    flowerModalEl = document.getElementById('flowerModal');
+    flowerGalleryEl = document.getElementById('flowerModalGallery');
+    flowerLoadingEl = document.getElementById('flowerModalLoading');
+    flowerErrorEl = document.getElementById('flowerModalError');
+  }
+
+  document.getElementById('flowerModalTitle').textContent = '🌸 ' + name;
+  flowerGalleryEl.innerHTML = '';
+  flowerLoadingEl.style.display = 'flex';
+  flowerErrorEl.style.display = 'none';
+  flowerModalEl.classList.add('show');
+
+  try {
+    // Try scientific name first, then common name
+    const rec = findFlowerRecord(name);
+    const query = rec && rec.scientificName ? rec.scientificName : name;
+    const encoded = encodeURIComponent(query);
+
+    const resp = await fetch(
+      `https://api.inaturalist.org/v1/observations?` +
+      `species_name=${encoded}&photos=true&per_page=6` +
+      `&ordered_by=votes&locale=zh&verifiable=true`
+    );
+    const json = await resp.json();
+    const results = json.results || [];
+
+    flowerLoadingEl.style.display = 'none';
+
+    if (results.length === 0) {
+      flowerErrorEl.style.display = 'block';
+      return;
+    }
+
+    // Build gallery: up to 6 photos
+    const html = results.map(obs => {
+      if (!obs.photos || obs.photos.length === 0) return '';
+      const photo = obs.photos[0];
+      // photo.url is the original; use medium for display
+      const imgUrl = photo.url.replace('/square.', '/medium.');
+      const credit = photo.attribution || 'iNaturalist';
+      const inatUrl = obs.uri || 'https://www.inaturalist.org/observations';
+      return `<a href="${inatUrl}" target="_blank" class="flower-photo-card" title="查看原图">
+        <img src="${imgUrl}" alt="${name}" loading="lazy" />
+        <p class="flower-credit">${credit}</p>
+      </a>`;
+    }).join('');
+
+    if (html) {
+      flowerGalleryEl.innerHTML = html;
+    } else {
+      flowerErrorEl.style.display = 'block';
+    }
+  } catch (e) {
+    console.warn('Flower photo fetch failed:', e);
+    flowerLoadingEl.style.display = 'none';
+    flowerErrorEl.style.display = 'block';
+  }
+}
+
+// Close flower modal events
+document.getElementById('flowerModalClose').addEventListener('click', closeFlowerPhoto);
+document.getElementById('flowerModal').addEventListener('click', e => {
+  if (e.target === document.getElementById('flowerModal')) closeFlowerPhoto();
+});
+
 // Leaflet map init
 const map = L.map('map').setView([40.1, 116.2], 9);
 
@@ -569,7 +649,8 @@ function showRouteDetail(id) {
     const flowersHtml = s.flowers.length > 0
       ? `<li>🌸 可看花：${s.flowers.map(f => {
         const period = getFlowerPeriod(f);
-        return period ? `${f}（${period}）` : f;
+        const label = period ? `${f}（${period}）` : f;
+        return `<span class="flower-tag" onclick="showFlowerPhoto('${f.replace(/'/g,"\\'")}')" title="查看图片">${label}</span>`;
       }).join('、')}</li>`
       : '';
     const fruitsHtml = s.fruits.length > 0

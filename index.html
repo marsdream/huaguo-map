@@ -71,6 +71,25 @@
     </div>
   </div>
 
+  <!-- Flower photo lightbox (separate from route modal) -->
+  <div class="flower-modal" id="flowerModal">
+    <div class="flower-modal-inner">
+      <button class="modal-close flower-modal-close" id="flowerModalClose">×</button>
+      <div class="flower-modal-header">
+        <h3 id="flowerModalTitle">🌸 山桃花</h3>
+        <p class="flower-modal-sub">图片来源：iNaturalist CC BY-NC</p>
+      </div>
+      <div class="flower-modal-loading" id="flowerModalLoading">
+        <span>正在从 iNaturalist 查找图片…</span>
+      </div>
+      <div class="flower-modal-gallery" id="flowerModalGallery"></div>
+      <div class="flower-modal-error" id="flowerModalError" style="display:none">
+        未找到图片，试试其他季节或去
+        <a href="https://www.inaturalist.org/observations" target="_blank">iNaturalist</a> 看看
+      </div>
+    </div>
+  </div>
+
   <footer>
     <p>🍎 花果地图 | 数据持续更新中 | 来源：visitbeijing.com.cn等公开资料 | <a href="https://github.com/marsdream/huaguo-map" target="_blank">GitHub</a></p>
   </footer>
