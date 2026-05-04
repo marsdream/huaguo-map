@@ -796,6 +796,9 @@ function loadOSMTrailsForRoute() {
   renderRouteList();
 
   const [lat, lng] = route.coordinates;
+  // 弹窗关闭后地图放大一级，给用户"进入地图"的反馈
+  map.flyTo([lat, lng], 15, { duration: 0.8 });
+
   const delta = 0.05; // ±0.05度 ≈ ±5km
   const bbox = `${(lat-delta).toFixed(4)},${(lng-delta).toFixed(4)},${(lat+delta).toFixed(4)},${(lng+delta).toFixed(4)}`;
   loadOSMTrails(bbox, route.id);
