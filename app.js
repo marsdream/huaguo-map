@@ -29,6 +29,8 @@ const ROUTES = [
       }
     ],
     notes: "起点：河防口隧道。驴友称为「北京小魔法森林」，溪流潺潺，爬升不高"
+  ,
+    trackUrl: "https://www.2bulu.com/community/gotohuatinfo.htm?id=ZsGbEKUN0XJJlGJD4S01Zw%3D%3D&type=1"
   },
   {
     id: "beiling-shan",
@@ -49,6 +51,8 @@ const ROUTES = [
       }
     ],
     notes: "起点：塔儿寺村。海拔1915米，京西徒步枢纽，野韭菜坡是其标志"
+  ,
+    trackUrl: "https://www.2bulu.com/event/business_event.htm?outingId=104764"
   },
   {
     id: "dongling-shan",
@@ -77,6 +81,8 @@ const ROUTES = [
       }
     ],
     notes: "北京第一高峰，海拔2303米。起点下马威（GPS: 39.9985, 115.4344），或聚灵峡景区"
+  ,
+    trackUrl: "https://www.2bulu.com/event/business_event.htm?outingId=3088611"
   },
   {
     id: "huangcao-liang",
@@ -98,6 +104,8 @@ const ROUTES = [
       }
     ],
     notes: "主峰海拔1737米，京西古道驿站，被誉为「驴友后花园」"
+  ,
+    trackUrl: "https://www.2bulu.com/event/business_event.htm?outingId=104764"
   },
   {
     id: "houhuayuan",
@@ -118,6 +126,8 @@ const ROUTES = [
       }
     ],
     notes: "又称白虎涧森林公园，地址：昌平区阳坊镇后二路。「燕平八景」之一"
+  ,
+    trackUrl: "https://www.2bulu.com/community/gotohuatinfo.htm?id=74941520"
   },
   {
     id: "baihe-xiagu",
@@ -138,6 +148,8 @@ const ROUTES = [
       }
     ],
     notes: "延庆白河堡至密云水库段，著名的「白河徒步道」"
+  ,
+    trackUrl: "https://www.2bulu.com/event/business_event.htm?outingId=3755469"
   },
   {
     id: "yudi-shan",
@@ -172,6 +184,8 @@ const ROUTES = [
       }
     ],
     notes: "海拔860米，延庆深山处女地，四季皆宜，高山草甸是其标志景观"
+  ,
+    trackUrl: "https://www.2bulu.com/event/business_event.htm?outingId=293370"
   },
   {
     id: "yunmeng-shan",
@@ -192,6 +206,8 @@ const ROUTES = [
       }
     ],
     notes: "主峰海拔1414米，京郊「小黄山」，地址：密云区与怀柔区交界"
+  ,
+    trackUrl: "https://www.2bulu.com/community/gotohuatinfo.htm?id=xlcsVuQ6bKIX%2FqqyqYhENw%3D%3D"
   },
   {
     id: "jsek-shan",
@@ -218,6 +234,8 @@ const ROUTES = [
       }
     ],
     notes: "戒台寺周边，千年古寺，历史悠久"
+  ,
+    trackUrl: "https://www.2bulu.com/track/t-e4yxYi3lUsHp%252FR2KBg5Tzw%253D%253D.htm"
   },
   {
     id: "bjiaotou",
@@ -242,6 +260,8 @@ const ROUTES = [
       }
     ],
     notes: "北京最著名野长城段，冬季可攀冰，需一定户外经验"
+  ,
+    trackUrl: "https://www.2bulu.com/community/gotohuatinfo.htm?id=lYzAYM4faC8sszYe9%252Fbdxw%253D%253D"
   },
   {
     id: "lingshan",
@@ -266,6 +286,8 @@ const ROUTES = [
       }
     ],
     notes: "灵山风景区，冬季雪景出名，夏季草甸花海。起点：江水河村"
+  ,
+    trackUrl: "https://www.2bulu.com/event/business_event.htm?outingId=3088611"
   },
   {
     id: "laoling",
@@ -773,6 +795,14 @@ function showRouteDetail(id) {
   document.getElementById('modalSeasons').innerHTML = seasonsHtml;
   const notesEl = document.getElementById('modalNotes');
   if (notesEl) notesEl.innerHTML = notesHtml;
+  const trackEl = document.getElementById('modalTrack');
+  if (trackEl) {
+    if (route.trackUrl) {
+      trackEl.innerHTML = '<a href="' + route.trackUrl + '" target="_blank" class="track-btn">&#129518; 在两步路打开轨迹 &#8594;</a>';
+    } else {
+      trackEl.innerHTML = '';
+    }
+  }
   document.getElementById('modal').classList.add('show');
 }
 
