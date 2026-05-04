@@ -385,9 +385,11 @@ loadFlowersData();
 // Leaflet map init
 const map = L.map('map').setView([40.1, 116.2], 9);
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '© OpenStreetMap',
-  maxZoom: 18
+L.tileLayer('https://webrd01.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}', {
+  subdomains: '1234',
+  attribution: '© 高德地图',
+  maxZoom: 18,
+  errorTileUrl: 'https://wprd01.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}'
 }).addTo(map);
 
 // Season colors
