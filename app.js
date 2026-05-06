@@ -535,6 +535,145 @@ const ROUTES = [
     ],
     rlevel: 2,
     notes: "怀柔区渤海镇，著名长城段之一，植被茂密，春秋皆宜"
+  },
+  {
+    id: "hongluosi",
+    name: "红螺寺",
+    location: "怀柔区",
+    coordinates: [40.3773, 116.6241],
+    difficulty: "入门",
+    distance: "约8公里",
+    elevation: "约700米",
+    seasons: [
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["紫藤","山桃花","杏花","梨花"],
+        fruits: []
+      },
+      {
+        season: "autumn",
+        months: [10, 11],
+        flowers: ["红叶"],
+        fruits: [
+          { name: "板栗", note: "周边栗子树" },
+          { name: "山楂", note: "野生山楂" },
+        ],
+      },
+    ],
+    rlevel: 2,
+    notes: '怀柔区红螺寺村，千年古刹，北方佛教名山。有"南有普陀，北有红螺"之说，春天紫藤花开，秋天红叶漫山'
+  },
+  {
+    id: "shenglian",
+    name: "圣莲山",
+    location: "房山区",
+    coordinates: [39.8468, 115.7319],
+    difficulty: "入门",
+    distance: "约8公里",
+    elevation: "约900米",
+    seasons: [
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山桃花","杏花","映山红"],
+        fruits: []
+      },
+      {
+        season: "autumn",
+        months: [9, 10, 11],
+        flowers: ["红叶"],
+        fruits: [
+          { name: "野果", note: "山间各种野果" },
+        ],
+      },
+    ],
+    rlevel: 2,
+    notes: '房山区史家营乡，因山体酷似莲花瓣而得名，海拔900米以上，被称为"京都第一奇山"。兼具自然风光与道佛古迹'
+  },
+  {
+    id: "shuichangcheng",
+    name: "水长城",
+    location: "怀柔区",
+    coordinates: [40.3170, 116.6320],
+    difficulty: "入门",
+    distance: "约10公里",
+    elevation: "约500米",
+    seasons: [
+      {
+        season: "spring",
+        months: [3, 4],
+        flowers: ["桃花","杏花","梨花"],
+        fruits: []
+      },
+      {
+        season: "autumn",
+        months: [10, 11],
+        flowers: ["红叶"],
+        fruits: [
+          { name: "板栗", note: "怀柔特产" },
+          { name: "山楂", note: "沿线野山楂" },
+        ],
+      },
+    ],
+    rlevel: 2,
+    notes: "怀柔区九渡河镇，黄花城水长城。长城入水的独特地貌，三季有花四季有景，春天桃花与湖面同框，秋天红叶彩叶"
+  },
+  {
+    id: "pofengling",
+    name: "坡峰岭",
+    location: "房山区",
+    coordinates: [39.6961, 115.8448],
+    difficulty: "入门",
+    distance: "约6公里（环形步道）",
+    elevation: "约700米",
+    seasons: [
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["黄栌花","山花"],
+        fruits: []
+      },
+      {
+        season: "autumn",
+        months: [10, 11],
+        flowers: ["红叶"],
+        fruits: [
+          { name: "柿子", note: "秋季成熟" },
+          { name: "山楂", note: "野山楂" },
+        ],
+      },
+    ],
+    rlevel: 2,
+    notes: "房山区周口店镇，以黄栌红叶著称，华北最大野生黄栌聚集地。每逢秋天万山红遍，被《国家地理》誉为华北最壮观山地红叶景观"
+  },
+  {
+    id: "shangfangshan",
+    name: "上方山",
+    location: "房山区",
+    coordinates: [39.6822, 115.8168],
+    difficulty: "入门",
+    distance: "约10公里",
+    elevation: "约860米",
+    seasons: [
+      {
+        season: "spring",
+        months: [3, 4, 5],
+        flowers: ["山桃花","杏花","野花","映山红"],
+        fruits: []
+      },
+      {
+        season: "summer",
+        months: [7, 8],
+        flowers: [],
+        fruits: [
+          { name: "野猕猴桃", note: "森林深处野生猕猴桃" },
+          { name: "野果", note: "山间各种野果" },
+        ],
+      },
+    ],
+    rlevel: 2,
+    notes: "房山区韩村河镇上方山国家森林公园，森林覆盖率90%以上，植物种类达625种。有雲水洞、天竺寺等景点，春赏山花秋观彩叶"
   }
 ]
 
