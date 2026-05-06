@@ -818,6 +818,7 @@ const SEASON_NAMES = {
 
 let activeSeason = 'all';
 let activeRegion = 'all';
+let activeLevel = 'all';
 let activeRouteId = null;
 const markers = {};
 
@@ -861,6 +862,17 @@ document.querySelectorAll('.region-filters .filter-btn').forEach(btn => {
   });
 });
 
+// Level filter buttons
+document.querySelectorAll('.level-filters .filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.level-filters .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeLevel = btn.dataset.level;
+    renderRouteList();
+    updateMarkers();
+  });
+});
+
 // Search
 document.getElementById('searchInput').addEventListener('input', renderRouteList);
 
@@ -887,6 +899,7 @@ function getFruitsForRoute(route) {
 
 function matchesFilter(route) {
   if (activeRegion !== 'all' && route.location !== activeRegion) return false;
+  if (activeLevel !== 'all' && route.rlevel !== parseInt(activeLevel)) return false;
   if (activeSeason !== 'all') {
     const hasSeason = route.seasons.some(s => s.season === activeSeason);
     if (!hasSeason) return false;
@@ -957,7 +970,8 @@ function updateMarkers() {
     const marker = markers[route.id];
     const seasonMatch = activeSeason === 'all' || route.seasons.some(s => s.season === activeSeason);
     const regionMatch = activeRegion === 'all' || route.location === activeRegion;
-    if (seasonMatch && regionMatch) {
+    const levelMatch = activeLevel === 'all' || route.rlevel === parseInt(activeLevel);
+    if (seasonMatch && regionMatch && levelMatch) {
       marker.addTo(map);
     } else {
       marker.remove();

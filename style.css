@@ -126,6 +126,19 @@ main {
   padding: 3px 9px;
   border-radius: 12px;
 }
+.sidebar .level-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.sidebar .level-filters .filter-btn {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 12px;
+}
 
 .route-card {
   padding: 12px;
