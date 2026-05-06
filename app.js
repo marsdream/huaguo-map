@@ -810,6 +810,195 @@ const ROUTES = [
     ],
     rlevel: 4,
     notes: "门头沟区雁翅镇珠窝村，海拔1020米。可俯瞰珍珠湖与永定河峡谷，山顶视野开阔，春秋皆宜"
+  },
+  {
+    id: "dajuesanfeng",
+    name: "大觉寺三峰环穿",
+    location: "海淀区",
+    coordinates: [40.0544, 116.1169],
+    difficulty: "进阶",
+    distance: "约22公里",
+    elevation: "约1700米",
+    seasons: [
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山桃花","杏花"],
+        fruits: []
+      },
+      {
+        season: "autumn",
+        months: [10, 11],
+        flowers: ["红叶"],
+        fruits: [
+          { name: "野果", note: "山间野果" },
+        ],
+      },
+    ],
+    rlevel: 5,
+    notes: "海淀区大觉寺出发，穿越北尖、阳台山、妙峰山三峰后回到大觉寺。北京最经典户外拉练路线之一，全程约22公里，累计爬升约1700米，适合有一定体力基础的徒步者"
+  },
+  {
+    id: "hongluosanxian",
+    name: "红螺三险",
+    location: "房山区",
+    coordinates: [39.6888, 115.8575],
+    difficulty: "挑战",
+    distance: "约12公里",
+    elevation: "约800米",
+    seasons: [
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山桃花","杏花"],
+        fruits: []
+      },
+      {
+        season: "autumn",
+        months: [10, 11],
+        flowers: ["红叶"],
+        fruits: [
+          { name: "野果", note: "山间野果" },
+        ],
+      },
+    ],
+    rlevel: 6,
+    notes: "房山区红螺三险，北京十大惊险路线之一。山体复杂，植被茂密，多断崖岔路，动植物资源丰富，夏季徒步需注意安全"
+  },
+  {
+    id: "heilongmijing",
+    name: "黑龙秘境",
+    location: "密云区",
+    coordinates: [40.3771, 116.8434],
+    difficulty: "挑战",
+    distance: "约15公里",
+    elevation: "约600米",
+    seasons: [
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山桃花","杏花","映山红"],
+        fruits: []
+      },
+      {
+        season: "summer",
+        months: [6, 7, 8],
+        flowers: [],
+        fruits: [
+          { name: "野果", note: "山谷沿线野果" },
+        ],
+      },
+    ],
+    rlevel: 6,
+    notes: "密云区云蒙山区域，穿越黑龙潭、天仙瀑等秘境。峡谷幽深，溪水潺潺，原始自然，是北京周边经典穿越路线之一"
+  },
+  {
+    id: "gouyashan",
+    name: "狗牙山",
+    location: "门头沟区",
+    coordinates: [40.0417, 115.7605],
+    difficulty: "挑战",
+    distance: "约10公里",
+    elevation: "约960米",
+    seasons: [
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山桃花","杏花"],
+        fruits: []
+      },
+      {
+        season: "autumn",
+        months: [10, 11],
+        flowers: ["红叶"],
+        fruits: [
+          { name: "野果", note: "山脊野果" },
+        ],
+      },
+    ],
+    rlevel: 6,
+    notes: "门头沟区雁翅镇碣石村，又名碣石岭。主峰海拔960米，因山脊形似狗牙而得名。十大夺命路线之一，险峻刺激，不适合夏季出行"
+  },
+  {
+    id: "tietuoshan",
+    name: "铁坨山",
+    location: "门头沟区",
+    coordinates: [39.9034, 116.0306],
+    difficulty: "挑战",
+    distance: "约10公里",
+    elevation: "约1100米",
+    seasons: [
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山桃花","杏花"],
+        fruits: []
+      },
+      {
+        season: "autumn",
+        months: [10, 11],
+        flowers: ["红叶"],
+        fruits: [
+          { name: "野果", note: "山间野果" },
+        ],
+      },
+    ],
+    rlevel: 6,
+    notes: '门头沟区潭柘寺西北，北京百慕大。位于门头沟与房山交界处，海拔约1100米，地形复杂，植被覆盖率高，被称为"北京百慕大"'
+  },
+  {
+    id: "nanbeiti",
+    name: "南北梯",
+    location: "房山区",
+    coordinates: [39.6494, 115.7972],
+    difficulty: "挑战",
+    distance: "约8公里",
+    elevation: "约600米",
+    seasons: [
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山桃花","杏花"],
+        fruits: []
+      },
+      {
+        season: "autumn",
+        months: [10, 11],
+        flowers: ["红叶"],
+        fruits: [
+          { name: "野果", note: "山间野果" },
+        ],
+      },
+    ],
+    rlevel: 6,
+    notes: "房山区圣水峪村青银沟，北京十大夺命路线之一。两条险峻山脊小路，曲折凹凸，险峻刺激，适合有经验的徒步者"
+  },
+  {
+    id: "yingshushan",
+    name: "樱树山",
+    location: "门头沟区",
+    coordinates: [40.0136, 116.0909],
+    difficulty: "挑战",
+    distance: "约8公里",
+    elevation: "约700米",
+    seasons: [
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山桃花","杏花"],
+        fruits: []
+      },
+      {
+        season: "autumn",
+        months: [10, 11],
+        flowers: ["红叶"],
+        fruits: [
+          { name: "野果", note: "山间野果" },
+        ],
+      },
+    ],
+    rlevel: 6,
+    notes: "门头沟区军庄，京西徒步路线。山势有特点，植被丰富，春秋景色宜人，适合有一定经验的徒步者"
   }
 ]
 
