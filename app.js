@@ -149,10 +149,10 @@ const ROUTES = [
     id: "yudi-shan",
     name: "玉渡山",
     location: "延庆区",
-    coordinates: [40.5531, 116.0731],
+    coordinates: [40.5316, 115.8990],
     difficulty: "入门",
     distance: "约5公里",
-    elevation: "约200米",
+    elevation: "约900米",
     seasons: [
       {
         season: "spring",
