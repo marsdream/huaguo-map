@@ -319,31 +319,10 @@ const ROUTES = [
     notes: "夏季玩水的好地方，溪流清澈"
   },
   {
-    id: "xianshi",
-    name: "显光寺-灰地",
-    location: "昌平区",
-    coordinates: [40.2231, 116.2531],
-    difficulty: "入门",
-    distance: "约5公里",
-    elevation: "约150米",
-    seasons: [
-      {
-        season: "spring",
-        months: [4],
-        flowers: ["野花"],
-        fruits: [
-          { name: "野菜", note: "可食用的各种野菜" },
-        ],
-      },
-    ],
-    rlevel: 3,
-    notes: "昌平山区，春季挖野菜的好去处"
-  },
-  {
     id: "xiangbala",
     name: "香八拉",
     location: "海淀区·石景山区",
-    coordinates: [39.9786, 116.195],
+    coordinates: [39.9599, 116.2977],
     difficulty: "入门",
     distance: "约12公里",
     elevation: "约500米",
