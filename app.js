@@ -862,6 +862,15 @@ document.querySelectorAll('.region-filters .filter-btn').forEach(btn => {
   });
 });
 
+// Filter block collapse/expand toggles
+document.querySelectorAll('.filter-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.target;
+    const block = document.getElementById(target + 'Block');
+    if (block) block.classList.toggle('expanded');
+  });
+});
+
 // Level filter buttons
 document.querySelectorAll('.level-filters .filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {

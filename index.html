@@ -54,28 +54,38 @@
       <div class="search-box">
         <input type="text" id="searchInput" placeholder="搜索路线、地点或花果..." />
       </div>
-      <div class="region-filters">
-        <button class="filter-btn active" data-region="all">全部区域</button>
-        <button class="filter-btn" data-region="门头沟区">门头沟</button>
-        <button class="filter-btn" data-region="怀柔区">怀柔</button>
-        <button class="filter-btn" data-region="昌平区">昌平</button>
-        <button class="filter-btn" data-region="延庆区">延庆</button>
-        <button class="filter-btn" data-region="密云区">密云</button>
-        <button class="filter-btn" data-region="平谷区">平谷</button>
-        <button class="filter-btn" data-region="房山区">房山</button>
-        <button class="filter-btn" data-region="海淀区">海淀</button>
+      <div class="filter-block" id="regionBlock">
+        <div class="filter-row-primary">
+          <button class="filter-btn active" data-region="all">全部区域</button>
+          <button class="filter-btn" data-region="门头沟区">门头沟</button>
+          <button class="filter-btn" data-region="怀柔区">怀柔</button>
+          <button class="filter-btn" data-region="昌平区">昌平</button>
+          <button class="filter-btn" data-region="延庆区">延庆</button>
+          <button class="filter-toggle" data-target="region">▶</button>
+        </div>
+        <div class="filter-row-secondary">
+          <button class="filter-btn" data-region="密云区">密云</button>
+          <button class="filter-btn" data-region="平谷区">平谷</button>
+          <button class="filter-btn" data-region="房山区">房山</button>
+          <button class="filter-btn" data-region="海淀区">海淀</button>
+        </div>
       </div>
-      <div class="level-filters">
-        <button class="filter-btn active" data-level="all">全部难度</button>
-        <button class="filter-btn" data-level="1">🌿 一级</button>
-        <button class="filter-btn" data-level="2">🌱 二级</button>
-        <button class="filter-btn" data-level="3">🥾 三级</button>
-        <button class="filter-btn" data-level="4">🌲 四级</button>
-        <button class="filter-btn" data-level="5">⛰️ 五级</button>
-        <button class="filter-btn" data-level="6">🏔️ 六级</button>
-        <button class="filter-btn" data-level="7">🏔️🏔️ 七级</button>
-        <button class="filter-btn" data-level="8">⚠️ 八级</button>
-        <button class="filter-btn" data-level="9">💀 九级</button>
+      <div class="filter-block" id="levelBlock">
+        <div class="filter-row-primary">
+          <button class="filter-btn active" data-level="all">全部难度</button>
+          <button class="filter-btn" data-level="1">🌿 一级</button>
+          <button class="filter-btn" data-level="2">🌱 二级</button>
+          <button class="filter-btn" data-level="3">🥾 三级</button>
+          <button class="filter-btn" data-level="4">🌲 四级</button>
+          <button class="filter-toggle" data-target="level">▶</button>
+        </div>
+        <div class="filter-row-secondary">
+          <button class="filter-btn" data-level="5">⛰️ 五级</button>
+          <button class="filter-btn" data-level="6">🏔️ 六级</button>
+          <button class="filter-btn" data-level="7">🏔️🏔️ 七级</button>
+          <button class="filter-btn" data-level="8">⚠️ 八级</button>
+          <button class="filter-btn" data-level="9">💀 九级</button>
+        </div>
       </div>
       <div class="route-count" id="routeCount">共 15 条路线</div>
       <div class="route-list" id="routeList"></div>
