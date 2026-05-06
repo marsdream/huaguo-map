@@ -1000,6 +1000,145 @@ const ROUTES = [
     rlevel: 6,
     notes: "门头沟区军庄，京西徒步路线。山势有特点，植被丰富，春秋景色宜人，适合有一定经验的徒步者"
   }
+  ,
+  {
+    id: "dongbeiling",
+    name: "东北灵连穿",
+    location: "门头沟区",
+    coordinates: [40.0320, 115.4605],
+    difficulty: "挑战",
+    distance: "约25公里",
+    elevation: "约2000米",
+    seasons: [
+      {
+        season: "summer",
+        months: [6, 7, 8],
+        flowers: ["野花","野韭菜"],
+        fruits: []
+      },
+      {
+        season: "autumn",
+        months: [9, 10, 11],
+        flowers: ["红叶"],
+        fruits: [
+          { name: "野果", note: "高山野果" },
+        ],
+      },
+    ],
+    rlevel: 7,
+    notes: "穿越东灵山和北灵山，北京顶级穿越路线。东灵山海拨2303米（北京最高峰），北灵山海拔约1900米，草甸丰美。强度大，适合有丰富经验的徒步者"
+  },
+  {
+    id: "daxiaohaietu",
+    name: "大、小海坨",
+    location: "延庆区",
+    coordinates: [40.4570, 115.9746],
+    difficulty: "挑战",
+    distance: "约15公里",
+    elevation: "约1800米",
+    seasons: [
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山桃花","杏花","杜鹃"],
+        fruits: []
+      },
+      {
+        season: "summer",
+        months: [6, 7, 8],
+        flowers: ["野花","高山草甸"],
+        fruits: [
+          { name: "野果", note: "高山野果" },
+        ],
+      },
+    ],
+    rlevel: 7,
+    notes: "延庆区与河北省交界处，大海坨海拔2241米（北京第二高峰），小海坨海拔约2199米。高山草甸风光壮美，冬季可滑雪，是北京户外圈的明星路线"
+  }
+  ,
+  {
+    id: "danbianqiang",
+    name: "单边墙",
+    location: "密云区",
+    coordinates: [40.6922, 117.1638],
+    difficulty: "极限",
+    distance: "约8公里",
+    elevation: "约900米",
+    seasons: [
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山花"],
+        fruits: []
+      },
+      {
+        season: "autumn",
+        months: [10, 11],
+        flowers: ["红叶"],
+        fruits: [
+          { name: "野果", note: "山野果" },
+        ],
+      },
+    ],
+    rlevel: 8,
+    notes: "密云区古北口司马台长城单边墙，海拔约900米。长城三险之首，山脊狭窄如单边，奇险无比，只适合专业徒步者"
+  }
+  ,
+  {
+    id: "shibapan",
+    name: "十八盘",
+    location: "密云区",
+    coordinates: [40.6800, 117.1500],
+    difficulty: "极限",
+    distance: "约10公里",
+    elevation: "约800米",
+    seasons: [
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山桃花","杏花"],
+        fruits: []
+      },
+      {
+        season: "autumn",
+        months: [10, 11],
+        flowers: ["红叶"],
+        fruits: [
+          { name: "野果", note: "山野果" },
+        ],
+      },
+    ],
+    rlevel: 8,
+    notes: "密云区古北口长城区域，徒步路线曲折陡峭。沿途古迹众多，穿越古老长城遗址，难度大，适合有丰富经验的徒步者"
+  }
+  ,
+  {
+    id: "fenghuangshixian",
+    name: "凤凰十险",
+    location: "海淀区",
+    coordinates: [40.1132, 116.1210],
+    difficulty: "极限",
+    distance: "约10公里",
+    elevation: "约800米",
+    seasons: [
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山桃花","杏花"],
+        fruits: []
+      },
+      {
+        season: "autumn",
+        months: [10, 11],
+        flowers: ["红叶"],
+        fruits: [
+          { name: "野果", note: "山野果" },
+        ],
+      },
+    ],
+    rlevel: 9,
+    notes: "海淀区凤凰岭，京城顶级挑战路线。因山势险峻、需跨越十个危险路段而得名，只有极少数资深徒步者才能完成"
+  }
 ]
 
 // Load flowers data from iNaturalist (enhanced flower period data)
