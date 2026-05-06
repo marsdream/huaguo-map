@@ -674,6 +674,142 @@ const ROUTES = [
     ],
     rlevel: 2,
     notes: "房山区韩村河镇上方山国家森林公园，森林覆盖率90%以上，植物种类达625种。有雲水洞、天竺寺等景点，春赏山花秋观彩叶"
+  },
+  {
+    id: "shuiquangou",
+    name: "水泉沟",
+    location: "延庆区",
+    coordinates: [40.5567, 116.0040],
+    difficulty: "进阶",
+    distance: "约10公里",
+    elevation: "约400米",
+    seasons: [
+      {
+        season: "spring",
+        months: [3, 4],
+        flowers: ["山桃花","杏花","野花"],
+        fruits: []
+      },
+      {
+        season: "summer",
+        months: [6, 7, 8],
+        flowers: [],
+        fruits: [
+          { name: "野果", note: "峡谷沿线山果" },
+        ],
+      },
+    ],
+    rlevel: 4,
+    notes: "延庆区白河峡谷水泉沟，经典溯溪徒步路线。峡谷幽深，溪水清澈，春秋赏花、夏季溯溪玩水，环境清幽人少"
+  },
+  {
+    id: "jingxigudao",
+    name: "京西古道",
+    location: "门头沟区",
+    coordinates: [39.9668, 116.0490],
+    difficulty: "进阶",
+    distance: "约15公里",
+    elevation: "约500米",
+    seasons: [
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山桃花","杏花"],
+        fruits: []
+      },
+      {
+        season: "autumn",
+        months: [9, 10, 11],
+        flowers: ["野菊"],
+        fruits: [
+          { name: "柿子", note: "沿线野柿子" },
+          { name: "山楂", note: "野生山楂" },
+        ],
+      },
+    ],
+    rlevel: 4,
+    notes: '门头沟区王平镇，千年京西古道。商旅往来古道，马帮铃铛历史，春秋景色最佳，秋季野菊金黄一片，被称为"野花天堂"'
+  },
+  {
+    id: "jingmenrailway",
+    name: "京门铁路",
+    location: "门头沟区",
+    coordinates: [39.9734, 116.0048],
+    difficulty: "进阶",
+    distance: "约10公里",
+    elevation: "约300米",
+    seasons: [
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山桃花","杏花","野花"],
+        fruits: []
+      },
+      {
+        season: "autumn",
+        months: [10, 11],
+        flowers: ["红叶"],
+        fruits: [
+          { name: "野果", note: "沿线山野果" },
+        ],
+      },
+    ],
+    rlevel: 4,
+    notes: '门头沟区色树坟村，京门铁路遗址徒步。火车轨道留存，自然回归的"野生铁路"，两侧山花绿植覆盖，文艺清新人少'
+  },
+  {
+    id: "cuiniaogu",
+    name: "翠鸟谷",
+    location: "延庆区",
+    coordinates: [40.6369, 116.5235],
+    difficulty: "进阶",
+    distance: "约8公里",
+    elevation: "约300米",
+    seasons: [
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山桃花","杏花","野花"],
+        fruits: []
+      },
+      {
+        season: "summer",
+        months: [6, 7, 8],
+        flowers: [],
+        fruits: [
+          { name: "野果", note: "峡谷山野果" },
+        ],
+      },
+    ],
+    rlevel: 4,
+    notes: "延庆区原生态河谷，火山岩峡谷地貌。夏季溯溪玩水、冬季冰瀑，芦苇荡与峡谷趣味性强，人少景美免费"
+  },
+  {
+    id: "qingchashan",
+    name: "清茶山",
+    location: "门头沟区",
+    coordinates: [40.0633, 115.7844],
+    difficulty: "进阶",
+    distance: "约10公里",
+    elevation: "约1000米",
+    seasons: [
+      {
+        season: "spring",
+        months: [4, 5],
+        flowers: ["山桃花","杏花","映山红"],
+        fruits: []
+      },
+      {
+        season: "autumn",
+        months: [10, 11],
+        flowers: ["红叶"],
+        fruits: [
+          { name: "野果", note: "山顶野果" },
+        ],
+      },
+    ],
+    rlevel: 4,
+    notes: "门头沟区雁翅镇珠窝村，海拔1020米。可俯瞰珍珠湖与永定河峡谷，山顶视野开阔，春秋皆宜"
   }
 ]
 
