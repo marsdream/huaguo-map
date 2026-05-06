@@ -852,9 +852,9 @@ document.querySelectorAll('.season-filters .filter-btn').forEach(btn => {
 });
 
 // Region filter buttons
-document.querySelectorAll('.region-filters .filter-btn').forEach(btn => {
+document.querySelectorAll('.filter-block#regionBlock .filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('.region-filters .filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('#regionBlock .filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     activeRegion = btn.dataset.region;
     renderRouteList();
@@ -872,9 +872,9 @@ document.querySelectorAll('.filter-toggle').forEach(btn => {
 });
 
 // Level filter buttons
-document.querySelectorAll('.level-filters .filter-btn').forEach(btn => {
+document.querySelectorAll('.filter-block#levelBlock .filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('.level-filters .filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('#levelBlock .filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     activeLevel = btn.dataset.level;
     renderRouteList();
