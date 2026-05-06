@@ -448,32 +448,58 @@ const ROUTES = [
     notes: "北京第三高峰，海拔1991米。高山草甸为华北地区代表景观"
   },
   {
-    id: "doufugou",
-    name: "豆腐沟-东直门",
-    location: "怀柔区",
-    coordinates: [40.4567, 116.605],
+    id: "bawangshan",
+    name: "百望山",
+    location: "海淀区",
+    coordinates: [40.0326, 116.2545],
     difficulty: "入门",
-    distance: "约9公里",
-    elevation: "约300米",
+    distance: "约8公里（健身步道）",
+    elevation: "约155米",
     seasons: [
       {
         season: "spring",
-        months: [4, 5],
-        flowers: ["山桃花","杏花","梨花"],
+        months: [3, 4, 5],
+        flowers: ["山桃花","杏花"],
         fruits: []
       },
       {
         season: "autumn",
-        months: [10],
-        flowers: [],
+        months: [10, 11],
+        flowers: ["红叶"],
         fruits: [
-          { name: "红肖梨", note: "怀柔特产" },
-          { name: "核桃", note: "9月" },
+          { name: "柿子", note: "野柿子树" },
         ],
       },
     ],
-    rlevel: 3,
-    notes: "怀柔经典徒步路线，沿沟谷而行，春季花海秋季采果"
+    rlevel: 1,
+    notes: "太行山余脉最东端，主峰海拔210米。距颐和园北3公里，森林覆盖率95%以上，京郊最近的城市森林公园之一"
+  },
+  {
+    id: "badachu",
+    name: "八大处公园",
+    location: "海淀区",
+    coordinates: [39.9537, 116.1800],
+    difficulty: "入门",
+    distance: "约5公里（景区内）",
+    elevation: "约300米",
+    seasons: [
+      {
+        season: "spring",
+        months: [3, 4],
+        flowers: ["山桃花","杏花","迎春","连翘"],
+        fruits: []
+      },
+      {
+        season: "autumn",
+        months: [10, 11],
+        flowers: ["红叶"],
+        fruits: [
+          { name: "柿子", note: "古树区周边野柿子" },
+        ],
+      },
+    ],
+    rlevel: 1,
+    notes: "香八拉经典路线的终点，三山八刹十二景，隋唐古刹。春季万杏齐发，秋季红叶漫山"
   },
   {
     id: "fenghuangling",
