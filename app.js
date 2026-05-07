@@ -1418,10 +1418,10 @@ const SEASON_COLORS = {
 };
 
 const SEASON_NAMES = {
-  spring: '🌸 春季',
-  summer: '🌿 夏季',
-  autumn: '🍂 秋季',
-  winter: '❄️ 冬季'
+  spring: '🌸 春',
+  summer: '🌿 夏',
+  autumn: '🍂 秋',
+  winter: '❄️ 冬'
 };
 
 let activeSeason = 'all';
