@@ -1491,9 +1491,18 @@ ROUTES.forEach(route => {
 
   const icon = L.divIcon({
     className: 'custom-marker',
-    html: `<div style="background:${color};width:28px;height:28px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;">${seasonIcon[seasons[0]] || '📍'}</div>`,
-    iconSize: [28, 28],
-    iconAnchor: [14, 14]
+    html: `<div style="
+      display:flex;align-items:center;gap:0;
+      background:#fff;border-radius:14px;
+      border:2.5px solid ${color};
+      box-shadow:0 2px 8px rgba(0,0,0,0.25);overflow:hidden;
+      width:42px;height:26px;
+    ">
+      <div style="width:22px;height:22px;background:${color};display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;flex-shrink:0;">${seasonIcon[seasons[0]] || '📍'}</div>
+      <div style="flex:1;text-align:center;font-size:13px;line-height:1;">🥾</div>
+    </div>`,
+    iconSize: [42, 26],
+    iconAnchor: [21, 13]
   });
 
   const marker = L.marker(route.coordinates, { icon }).addTo(map);
