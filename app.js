@@ -1375,25 +1375,31 @@ async function loadOSMTrails(bbox, routeId, routeCoordinates) {
     }
 
     // ── 从实际轨迹几何中提取起点和终点坐标 ──
-    // GeoJSON coordinates 是 [lng, lat]，Leaflet 需要 [lat, lng]
+    // GeoJSON coordinates 是 [lng, lat]
     const trailStart = geojson.features.length > 0 && geojson.features[0].geometry.coordinates.length > 0
-      ? geojson.features[0].geometry.coordinates[0]  // 第一条线的第一个点
+      ? geojson.features[0].geometry.coordinates[0]
       : null;
     const lastFeat = geojson.features[geojson.features.length - 1];
     const trailEnd = lastFeat && lastFeat.geometry.coordinates.length > 0
-      ? lastFeat.geometry.coordinates[lastFeat.geometry.coordinates.length - 1]  // 最后一条线的最后一个点
+      ? lastFeat.geometry.coordinates[lastFeat.geometry.coordinates.length - 1]
       : null;
+
+    // 没有轨迹数据时直接退出，不放标记不飞地图
+    if (!trailStart) {
+      console.warn('[OSM Trails] No trail data found for bbox', bbox);
+      if (btn) { btn.textContent = '❌ 附近无路线数据'; btn.disabled = false; }
+      return;
+    }
 
     const route = ROUTES.find(r => r.id === routeId);
     const difficultyLabel = route ? `${route.difficulty} · ${route.distance}` : '徒步路线';
 
-    // ── 起点：旗帜标记（点击显示详情） ──
-    // 优先用离 routeCoordinates 最近的端点作为"起点"
+    // 离 routeCoordinates 最近的端点作为"起点"
     let flagPos = trailStart;
-    if (trailStart && trailEnd && routeCoordinates) {
+    if (trailEnd && routeCoordinates) {
       const dStart = Math.hypot(trailStart[1] - routeCoordinates[0], trailStart[0] - routeCoordinates[1]);
       const dEnd   = Math.hypot(trailEnd[1]   - routeCoordinates[0], trailEnd[0]   - routeCoordinates[1]);
-      flagPos = dStart <= dEnd ? trailStart : trailEnd; // 离原坐标近的作为起点
+      flagPos = dStart <= dEnd ? trailStart : trailEnd;
     }
 
     const flagIcon = L.divIcon({
@@ -1414,8 +1420,8 @@ async function loadOSMTrails(bbox, routeId, routeCoordinates) {
       document.getElementById('modal').classList.add('show');
     });
 
-    // ── 终点：徒步小人标记 ──
-    if (trailEnd) {
+    // ── 终点徒步小人（仅在有明确不同端点时显示）──
+    if (trailEnd && !(trailEnd[0] === trailStart[0] && trailEnd[1] === trailStart[1])) {
       const endPos = flagPos === trailStart ? trailEnd : trailStart;
       const hikerIcon = L.divIcon({
         className: 'trailhead-marker',
@@ -1435,11 +1441,8 @@ async function loadOSMTrails(bbox, routeId, routeCoordinates) {
       });
     }
 
-    // 飞到起点坐标
     map.flyTo([flagPos[1], flagPos[0]], 14, { duration: 1.0 });
-
-    console.log(`[OSM Trails] Loaded ${ways.length} segments for route ${routeId}, flag:${flagPos} end:${trailEnd}`);
-    return flagPos;
+    console.log(`[OSM Trails] OK ${ways.length} segments, flag:${flagPos} end:${trailEnd}`);
   } catch (e) {
     console.warn('[OSM Trails] Failed to load:', e);
     if (btn) {
@@ -1510,18 +1513,9 @@ ROUTES.forEach(route => {
 
   const icon = L.divIcon({
     className: 'custom-marker',
-    html: `<div style="
-      display:flex;align-items:center;gap:0;
-      background:#fff;border-radius:14px;
-      border:2.5px solid ${color};
-      box-shadow:0 2px 8px rgba(0,0,0,0.25);overflow:hidden;
-      width:42px;height:26px;
-    ">
-      <div style="width:22px;height:22px;background:${color};display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;flex-shrink:0;">${seasonIcon[seasons[0]] || '📍'}</div>
-      <div style="flex:1;text-align:center;font-size:13px;line-height:1;">🥾</div>
-    </div>`,
-    iconSize: [42, 26],
-    iconAnchor: [21, 13]
+    html: `<div style="background:${color};width:28px;height:28px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;">${seasonIcon[seasons[0]] || '📍'}</div>`,
+    iconSize: [28, 28],
+    iconAnchor: [14, 14]
   });
 
   const marker = L.marker(route.coordinates, { icon }).addTo(map);
