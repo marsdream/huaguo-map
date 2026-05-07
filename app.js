@@ -322,7 +322,7 @@ const ROUTES = [
     id: "xiangbala",
     name: "香八拉",
     location: "海淀区·石景山区",
-    coordinates: [39.9599, 116.2977],
+    coordinates: [39.982685, 116.215855],
     difficulty: "入门",
     distance: "约12公里",
     elevation: "约500米",
