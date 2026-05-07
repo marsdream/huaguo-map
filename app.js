@@ -593,9 +593,9 @@ const ROUTES = [
   },
   {
     id: "shuichangcheng",
-    name: "水长城",
+    name: "黄花城水长城",
     location: "怀柔区",
-    coordinates: [40.3170, 116.6320],
+    coordinates: [40.413026, 116.303862],
     difficulty: "入门",
     distance: "约10公里",
     elevation: "约500米",
