@@ -1305,12 +1305,19 @@ function onEachFeature(feature, layer) {
 let _osmTrailsLoaded = false;
 let _osmTrailsLayer = null;
 let _activeOsmRouteId = null; // 当前显示哪条路线的OSM轨迹
+let _trailheadMarker = null;  // 徒步路线起点标记（旗帜图标，可点击查看难度）
 
-async function loadOSMTrails(bbox, routeId) {
+async function loadOSMTrails(bbox, routeId, routeCoordinates) {
   // 清除旧图层（如果是不同路线）
   if (_osmTrailsLayer) {
     map.removeLayer(_osmTrailsLayer);
     _osmTrailsLayer = null;
+  }
+
+  // 清除旧的起点标记
+  if (_trailheadMarker) {
+    map.removeLayer(_trailheadMarker);
+    _trailheadMarker = null;
   }
 
   const btn = document.getElementById('routeLoadTrailsBtn');
@@ -1366,13 +1373,61 @@ async function loadOSMTrails(bbox, routeId) {
       btn.textContent = '✅ 已加载';
       btn.disabled = true;
     }
-    console.log(`[OSM Trails] Loaded ${ways.length} segments for route ${routeId}`);
+
+    // ── 找实际徒步起点：离 routeCoordinates 最近的 OSM way 的首节点 ──
+    let trailhead = null;
+    if (ways.length > 0 && routeCoordinates) {
+      let minDist = Infinity;
+      for (const w of ways) {
+        const firstNode = nodes[w.nodes[0]];
+        if (!firstNode) continue;
+        const dlat = firstNode[0] - routeCoordinates[0];
+        const dlng = firstNode[1] - routeCoordinates[1];
+        const dist = Math.sqrt(dlat * dlat + dlng * dlng);
+        if (dist < minDist) {
+          minDist = dist;
+          trailhead = firstNode;
+        }
+      }
+    }
+
+    // 如果没找到 OSM 起点，退到路线原始坐标
+    if (!trailhead) trailhead = routeCoordinates;
+
+    // ── 在起点放置可点击的旗帜标记，点击显示路线难度 ──
+    const route = ROUTES.find(r => r.id === routeId);
+    const difficultyLabel = route ? `${route.difficulty} · ${route.distance}` : '徒步路线';
+    const flagIcon = L.divIcon({
+      className: 'trailhead-marker',
+      html: `<div style="
+        background:#fff;border:2px solid #e91e63;border-radius:8px;
+        padding:4px 8px;font-size:12px;font-weight:bold;color:#e91e63;
+        box-shadow:0 2px 8px rgba(0,0,0,0.25);white-space:nowrap;
+        cursor:pointer;line-height:1.4;
+      ">🚩 ${difficultyLabel}</div>`,
+      iconSize: [100, 28],
+      iconAnchor: [50, 14]
+    });
+    _trailheadMarker = L.marker([trailhead[0], trailhead[1]], { icon: flagIcon }).addTo(map);
+    _trailheadMarker.on('click', () => {
+      // 重新打开详情弹窗
+      activeRouteId = routeId;
+      renderRouteList();
+      document.getElementById('modal').classList.add('show');
+    });
+
+    // 飞到此起点的坐标（此函数返回 trailhead 供调用方使用）
+    map.flyTo([trailhead[0], trailhead[1]], 14, { duration: 1.0 });
+
+    console.log(`[OSM Trails] Loaded ${ways.length} segments for route ${routeId}, trailhead: ${trailhead}`);
+    return trailhead;
   } catch (e) {
     console.warn('[OSM Trails] Failed to load:', e);
     if (btn) {
       btn.textContent = '❌ 加载失败';
       btn.disabled = false;
     }
+    return null;
   }
 }
 
@@ -1390,12 +1445,10 @@ function loadOSMTrailsForRoute() {
   renderRouteList();
 
   const [lat, lng] = route.coordinates;
-  // 弹窗关闭后地图放大一级，给用户"进入地图"的反馈
-  map.flyTo([lat, lng], 14, { duration: 0.8 });
-
   const delta = 0.05; // ±0.05度 ≈ ±5km
   const bbox = `${(lat-delta).toFixed(4)},${(lng-delta).toFixed(4)},${(lat+delta).toFixed(4)},${(lng+delta).toFixed(4)}`;
-  loadOSMTrails(bbox, route.id);
+  // 传递 routeCoordinates，loadOSMTrails 会自动找到实际起点并飞过去
+  loadOSMTrails(bbox, route.id, route.coordinates);
 }
 
 // 导航前往：调用高德地图 web URI
