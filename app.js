@@ -1374,29 +1374,28 @@ async function loadOSMTrails(bbox, routeId, routeCoordinates) {
       btn.disabled = true;
     }
 
-    // ── 找实际徒步起点：离 routeCoordinates 最近的 OSM way 的首节点 ──
-    let trailhead = null;
-    if (ways.length > 0 && routeCoordinates) {
-      let minDist = Infinity;
-      for (const w of ways) {
-        const firstNode = nodes[w.nodes[0]];
-        if (!firstNode) continue;
-        const dlat = firstNode[0] - routeCoordinates[0];
-        const dlng = firstNode[1] - routeCoordinates[1];
-        const dist = Math.sqrt(dlat * dlat + dlng * dlng);
-        if (dist < minDist) {
-          minDist = dist;
-          trailhead = firstNode;
-        }
-      }
-    }
+    // ── 从实际轨迹几何中提取起点和终点坐标 ──
+    // GeoJSON coordinates 是 [lng, lat]，Leaflet 需要 [lat, lng]
+    const trailStart = geojson.features.length > 0 && geojson.features[0].geometry.coordinates.length > 0
+      ? geojson.features[0].geometry.coordinates[0]  // 第一条线的第一个点
+      : null;
+    const lastFeat = geojson.features[geojson.features.length - 1];
+    const trailEnd = lastFeat && lastFeat.geometry.coordinates.length > 0
+      ? lastFeat.geometry.coordinates[lastFeat.geometry.coordinates.length - 1]  // 最后一条线的最后一个点
+      : null;
 
-    // 如果没找到 OSM 起点，退到路线原始坐标
-    if (!trailhead) trailhead = routeCoordinates;
-
-    // ── 在起点放置可点击的旗帜标记，点击显示路线难度 ──
     const route = ROUTES.find(r => r.id === routeId);
     const difficultyLabel = route ? `${route.difficulty} · ${route.distance}` : '徒步路线';
+
+    // ── 起点：旗帜标记（点击显示详情） ──
+    // 优先用离 routeCoordinates 最近的端点作为"起点"
+    let flagPos = trailStart;
+    if (trailStart && trailEnd && routeCoordinates) {
+      const dStart = Math.hypot(trailStart[1] - routeCoordinates[0], trailStart[0] - routeCoordinates[1]);
+      const dEnd   = Math.hypot(trailEnd[1]   - routeCoordinates[0], trailEnd[0]   - routeCoordinates[1]);
+      flagPos = dStart <= dEnd ? trailStart : trailEnd; // 离原坐标近的作为起点
+    }
+
     const flagIcon = L.divIcon({
       className: 'trailhead-marker',
       html: `<div style="
@@ -1405,22 +1404,42 @@ async function loadOSMTrails(bbox, routeId, routeCoordinates) {
         box-shadow:0 2px 8px rgba(0,0,0,0.25);white-space:nowrap;
         cursor:pointer;line-height:1.4;
       ">🚩 ${difficultyLabel}</div>`,
-      iconSize: [100, 28],
-      iconAnchor: [50, 14]
+      iconSize: [120, 28],
+      iconAnchor: [60, 14]
     });
-    _trailheadMarker = L.marker([trailhead[0], trailhead[1]], { icon: flagIcon }).addTo(map);
+    _trailheadMarker = L.marker([flagPos[1], flagPos[0]], { icon: flagIcon }).addTo(map);
     _trailheadMarker.on('click', () => {
-      // 重新打开详情弹窗
       activeRouteId = routeId;
       renderRouteList();
       document.getElementById('modal').classList.add('show');
     });
 
-    // 飞到此起点的坐标（此函数返回 trailhead 供调用方使用）
-    map.flyTo([trailhead[0], trailhead[1]], 14, { duration: 1.0 });
+    // ── 终点：徒步小人标记 ──
+    if (trailEnd) {
+      const endPos = flagPos === trailStart ? trailEnd : trailStart;
+      const hikerIcon = L.divIcon({
+        className: 'trailhead-marker',
+        html: `<div style="
+          background:#fff;border:2px solid #4caf50;border-radius:50%;
+          width:28px;height:28px;display:flex;align-items:center;justify-content:center;
+          font-size:15px;box-shadow:0 2px 6px rgba(0,0,0,0.3);cursor:pointer;
+        ">🥾</div>`,
+        iconSize: [28, 28],
+        iconAnchor: [14, 14]
+      });
+      const endMarker = L.marker([endPos[1], endPos[0]], { icon: hikerIcon }).addTo(map);
+      endMarker.on('click', () => {
+        activeRouteId = routeId;
+        renderRouteList();
+        document.getElementById('modal').classList.add('show');
+      });
+    }
 
-    console.log(`[OSM Trails] Loaded ${ways.length} segments for route ${routeId}, trailhead: ${trailhead}`);
-    return trailhead;
+    // 飞到起点坐标
+    map.flyTo([flagPos[1], flagPos[0]], 14, { duration: 1.0 });
+
+    console.log(`[OSM Trails] Loaded ${ways.length} segments for route ${routeId}, flag:${flagPos} end:${trailEnd}`);
+    return flagPos;
   } catch (e) {
     console.warn('[OSM Trails] Failed to load:', e);
     if (btn) {
