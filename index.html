@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>花果地图 - 北京徒步路线四季采集指南</title>
   <link rel="stylesheet" href="style.css?v=5">
-  <link rel="stylesheet" href="lib/leaflet.css?v=4">
+  <link rel="stylesheet" href="lib/leaflet.css?v=5">
   <style>
   /* 花名可点击样式 */
   .flower-tag{cursor:pointer;color:#c2185b;border-bottom:1px dashed #e91e63;transition:color 0.15s,border-color 0.15s}
@@ -28,9 +28,14 @@
   .flower-modal-error{text-align:center;padding:24px;font-size:13px;color:var(--text-light)}
   .flower-modal-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border:none;background:#f0ede6;border-radius:50%;font-size:20px;cursor:pointer;color:var(--text-light);display:flex;align-items:center;justify-content:center}
   .flower-modal-close:hover{background:#e0dcd4}
-  /* OSM徒步路径发光效果 */
+  /* OSM徒步路径呼吸灯效果 */
   .osm-trail {
-    filter: drop-shadow(0 0 3px currentColor);
+    filter: drop-shadow(0 0 4px currentColor);
+    animation: trail-glow 2.5s ease-in-out infinite;
+  }
+  @keyframes trail-glow {
+    0%, 100% { filter: drop-shadow(0 0 2px currentColor) drop-shadow(0 0 4px currentColor); opacity: 0.85; }
+    50%       { filter: drop-shadow(0 0 6px currentColor) drop-shadow(0 0 12px currentColor); opacity: 1; }
   }
   </style>
 </head>
