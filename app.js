@@ -322,7 +322,7 @@ const ROUTES = [
     id: "xiangbala",
     name: "香八拉",
     location: "海淀区·石景山区",
-    coordinates: [39.982685, 116.215855],
+    coordinates: [39.9599, 116.2977],
     difficulty: "入门",
     distance: "约12公里",
     elevation: "约500米",
@@ -1269,12 +1269,12 @@ L.tileLayer('https://webrd01.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=
 
 // ─── OSM 山野路径叠加（方案A）──────────────────────────────
 const SAC_STYLE = {
-  alpine_hiking:              { color: '#d32f2f', weight: 4, opacity: 0.85 },
-  demanding_alpine_hiking:    { color: '#e64a19', weight: 4, opacity: 0.80 },
-  difficult_alpine_hiking:    { color: '#f44336', weight: 4, opacity: 0.80 },
-  demanding_mountain_hiking:  { color: '#ff9800', weight: 3, opacity: 0.75 },
-  mountain_hiking:            { color: '#4caf50', weight: 3, opacity: 0.70 },
-  hiking:                     { color: '#2196f3', weight: 2, opacity: 0.65 },
+  alpine_hiking:              { color: '#d32f2f', weight: 4, opacity: 0.85, className: 'osm-trail' },
+  demanding_alpine_hiking:    { color: '#e64a19', weight: 4, opacity: 0.80, className: 'osm-trail' },
+  difficult_alpine_hiking:    { color: '#f44336', weight: 4, opacity: 0.80, className: 'osm-trail' },
+  demanding_mountain_hiking:  { color: '#ff9800', weight: 3, opacity: 0.75, className: 'osm-trail' },
+  mountain_hiking:            { color: '#4caf50', weight: 3, opacity: 0.70, className: 'osm-trail' },
+  hiking:                     { color: '#2196f3', weight: 2, opacity: 0.65, className: 'osm-trail' },
 };
 const SAC_LABELS = {
   alpine_hiking:              '🧗 高山路径',
@@ -1305,19 +1305,12 @@ function onEachFeature(feature, layer) {
 let _osmTrailsLoaded = false;
 let _osmTrailsLayer = null;
 let _activeOsmRouteId = null; // 当前显示哪条路线的OSM轨迹
-let _trailheadMarker = null;  // 徒步路线起点标记（旗帜图标，可点击查看难度）
 
-async function loadOSMTrails(bbox, routeId, routeCoordinates) {
+async function loadOSMTrails(bbox, routeId) {
   // 清除旧图层（如果是不同路线）
   if (_osmTrailsLayer) {
     map.removeLayer(_osmTrailsLayer);
     _osmTrailsLayer = null;
-  }
-
-  // 清除旧的起点标记
-  if (_trailheadMarker) {
-    map.removeLayer(_trailheadMarker);
-    _trailheadMarker = null;
   }
 
   const btn = document.getElementById('routeLoadTrailsBtn');
@@ -1373,83 +1366,13 @@ async function loadOSMTrails(bbox, routeId, routeCoordinates) {
       btn.textContent = '✅ 已加载';
       btn.disabled = true;
     }
-
-    // ── 从实际轨迹几何中提取起点和终点坐标 ──
-    // GeoJSON coordinates 是 [lng, lat]
-    const trailStart = geojson.features.length > 0 && geojson.features[0].geometry.coordinates.length > 0
-      ? geojson.features[0].geometry.coordinates[0]
-      : null;
-    const lastFeat = geojson.features[geojson.features.length - 1];
-    const trailEnd = lastFeat && lastFeat.geometry.coordinates.length > 0
-      ? lastFeat.geometry.coordinates[lastFeat.geometry.coordinates.length - 1]
-      : null;
-
-    // 没有轨迹数据时直接退出，不放标记不飞地图
-    if (!trailStart) {
-      console.warn('[OSM Trails] No trail data found for bbox', bbox);
-      if (btn) { btn.textContent = '❌ 附近无路线数据'; btn.disabled = false; }
-      return;
-    }
-
-    const route = ROUTES.find(r => r.id === routeId);
-    const difficultyLabel = route ? `${route.difficulty} · ${route.distance}` : '徒步路线';
-
-    // 离 routeCoordinates 最近的端点作为"起点"
-    let flagPos = trailStart;
-    if (trailEnd && routeCoordinates) {
-      const dStart = Math.hypot(trailStart[1] - routeCoordinates[0], trailStart[0] - routeCoordinates[1]);
-      const dEnd   = Math.hypot(trailEnd[1]   - routeCoordinates[0], trailEnd[0]   - routeCoordinates[1]);
-      flagPos = dStart <= dEnd ? trailStart : trailEnd;
-    }
-
-    const flagIcon = L.divIcon({
-      className: 'trailhead-marker',
-      html: `<div style="
-        background:#fff;border:2px solid #e91e63;border-radius:8px;
-        padding:4px 8px;font-size:12px;font-weight:bold;color:#e91e63;
-        box-shadow:0 2px 8px rgba(0,0,0,0.25);white-space:nowrap;
-        cursor:pointer;line-height:1.4;
-      ">🚩 ${difficultyLabel}</div>`,
-      iconSize: [120, 28],
-      iconAnchor: [60, 14]
-    });
-    _trailheadMarker = L.marker([flagPos[1], flagPos[0]], { icon: flagIcon }).addTo(map);
-    _trailheadMarker.on('click', () => {
-      activeRouteId = routeId;
-      renderRouteList();
-      document.getElementById('modal').classList.add('show');
-    });
-
-    // ── 终点徒步小人（仅在有明确不同端点时显示）──
-    if (trailEnd && !(trailEnd[0] === trailStart[0] && trailEnd[1] === trailStart[1])) {
-      const endPos = flagPos === trailStart ? trailEnd : trailStart;
-      const hikerIcon = L.divIcon({
-        className: 'trailhead-marker',
-        html: `<div style="
-          background:#fff;border:2px solid #4caf50;border-radius:50%;
-          width:28px;height:28px;display:flex;align-items:center;justify-content:center;
-          font-size:15px;box-shadow:0 2px 6px rgba(0,0,0,0.3);cursor:pointer;
-        ">🥾</div>`,
-        iconSize: [28, 28],
-        iconAnchor: [14, 14]
-      });
-      const endMarker = L.marker([endPos[1], endPos[0]], { icon: hikerIcon }).addTo(map);
-      endMarker.on('click', () => {
-        activeRouteId = routeId;
-        renderRouteList();
-        document.getElementById('modal').classList.add('show');
-      });
-    }
-
-    map.flyTo([flagPos[1], flagPos[0]], 14, { duration: 1.0 });
-    console.log(`[OSM Trails] OK ${ways.length} segments, flag:${flagPos} end:${trailEnd}`);
+    console.log(`[OSM Trails] Loaded ${ways.length} segments for route ${routeId}`);
   } catch (e) {
     console.warn('[OSM Trails] Failed to load:', e);
     if (btn) {
       btn.textContent = '❌ 加载失败';
       btn.disabled = false;
     }
-    return null;
   }
 }
 
@@ -1467,10 +1390,12 @@ function loadOSMTrailsForRoute() {
   renderRouteList();
 
   const [lat, lng] = route.coordinates;
+  // 弹窗关闭后地图放大一级，给用户"进入地图"的反馈
+  map.flyTo([lat, lng], 14, { duration: 0.8 });
+
   const delta = 0.05; // ±0.05度 ≈ ±5km
   const bbox = `${(lat-delta).toFixed(4)},${(lng-delta).toFixed(4)},${(lat+delta).toFixed(4)},${(lng+delta).toFixed(4)}`;
-  // 传递 routeCoordinates，loadOSMTrails 会自动找到实际起点并飞过去
-  loadOSMTrails(bbox, route.id, route.coordinates);
+  loadOSMTrails(bbox, route.id);
 }
 
 // 导航前往：调用高德地图 web URI
